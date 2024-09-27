@@ -1538,6 +1538,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738858</Id>
 					<Name><![CDATA[project_name]]></Name>
+					<Description><![CDATA[Name of the project]]></Description>
 					<X>60</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1610,6 +1611,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738867</Id>
 					<Name><![CDATA[grid_operator]]></Name>
+					<Description><![CDATA[Name of the grid operator (Enexis, Liander, Stedin, etc.)]]></Description>
 					<X>60</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1820,6 +1822,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738900</Id>
 					<Name><![CDATA[project_type]]></Name>
+					<Description><![CDATA[BUSINESSPARK or RESIDENTIAL]]></Description>
 					<X>60</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1893,6 +1896,8 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726236153260</Id>
 					<Name><![CDATA[p_reloadDatabase]]></Name>
+					<Description><![CDATA[If you want to reload the anylogic database: True (note that the database should be put in the 'databaseNames' collection for it to reload.
+If you don't: False (faster startup with false)]]></Description>
 					<X>560</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1917,6 +1922,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726238630353</Id>
 					<Name><![CDATA[p_createCurrentElectricityEA]]></Name>
+					<Description><![CDATA[Create energy assets on top of the electricity profile. (Making this true, would lead to double counting energy assets.) So suggested to keep it at false!.]]></Description>
 					<X>560</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1941,6 +1947,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726238717943</Id>
 					<Name><![CDATA[p_runHeadlessAtStartup]]></Name>
+					<Description><![CDATA[Run simulation at startup. This is needed to get the KPIs and all graphs right away. However, can be put on false to speed up the startup of the model while working on the model.]]></Description>
 					<X>560</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1986,6 +1993,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1727364920381</Id>
 					<Name><![CDATA[p_showKPISummary]]></Name>
+					<Description><![CDATA[Boolean which you can use to turn on or off the KPI summary at the end of a simulation.]]></Description>
 					<X>560</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2010,6 +2018,15 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="CollectionVariable">
 					<Id>1726235892488</Id>
 					<Name><![CDATA[databaseNames]]></Name>
+					<Description><![CDATA[Collection of the databases that should be reloaded in when p_reloadDatabase = true. 
+Should be in the format:
+{
+{Excel name, sheet/database name}
+{Excel name, sheet/database name}
+}
+
+--> You can add as much databases as you like.
+Important note: The excel sheet name should always be the same as the anylogic database name!]]></Description>
 					<X>60</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
