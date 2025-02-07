@@ -4,7 +4,7 @@
 	         AnyLogic Project File
 *************************************************
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.1.202408021042" AlpVersion="8.9.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.2.202410172112" AlpVersion="8.9.2">
 <Model>
 	<Id>1658477103134</Id>
 	<Name><![CDATA[Zero_ProjectTemplate]]></Name>
@@ -133,9 +133,7 @@ public void f_readDatabase(){
 					<RowsCountCode><![CDATA[100]]></RowsCountCode>
 					<NeigborhoodType>MOORE</NeigborhoodType>
 					<LayoutType>USER_DEF</LayoutType>
-					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
 					<NetworkType>USER_DEF</NetworkType>
-					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
 					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
 					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
 					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
@@ -195,55 +193,6 @@ zero_Interface.settings = settings;]]></Body>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1726150833775</Id>
-					<Name><![CDATA[f_setGenericProfiles_data]]></Name>
-					<X>-690</X><Y>260</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[List<Double> argumentsList = selectFrom( profiles ).list( profiles.t_h );
-
-// Various demand profiles
-
-List<Double> houseEdemandList = selectFrom( profiles ).list( profiles.house_e_demand_other );
-List<Double> houseHDHWdemandList = selectFrom( profiles ).list( profiles.house_h_demand_hot_water );
-List<Double> buildingEdemandList = selectFrom( profiles ).list( profiles.building_e_demand_other );
-List<Double> buildingHeatDemandList = selectFrom( profiles ).list( profiles.building_h_demand );
-List<Double> industrySteelEdemandList = selectFrom( profiles ).list( profiles.industry_steel_e_demand );
-List<Double> industrySteelHdemandList = selectFrom( profiles ).list( profiles.industry_steel_h_demand );
-List<Double> industryOtherEdemandList = selectFrom( profiles ).list( profiles.industry_other_e_demand );
-List<Double> industryOtherHdemandList = selectFrom( profiles ).list( profiles.industry_other_h_demand );
-List<Double> logisticsFleetEdemandList = selectFrom( profiles ).list( profiles.logistics_fleet_e_hgv );     
- 
-// Weather data
-List<Double> windList = selectFrom( profiles ).list( profiles.wind_e_prod_normalized );
-List<Double> solarList = selectFrom( profiles ).list( profiles.solar_e_prod_normalized );
-List<Double> tempList = selectFrom( profiles ).list( profiles.ambient_temperature_deg_c );
-List<Double> epexList = selectFrom( profiles ).list( profiles.day_ahead_price_eur_mwh ); 
-
-
-
-//Create Profiles_data object
-genericProfiles_data = Profiles_data.builder().
-argumentsList(argumentsList).
-houseEdemandList(houseEdemandList).
-houseHDHWdemandList(houseHDHWdemandList).
-buildingEdemandList(buildingEdemandList).
-buildingHeatDemandList(buildingHeatDemandList).
-industrySteelEdemandList(industrySteelEdemandList).
-industrySteelHdemandList(industrySteelHdemandList).
-industryOtherEdemandList(industryOtherEdemandList).
-industryOtherHdemandList(industryOtherHdemandList).
-logisticsFleetEdemandList(logisticsFleetEdemandList).
-windList(windList).
-solarList(solarList).
-tempList(tempList).
-epexList(epexList).build();]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726156899337</Id>
 					<Name><![CDATA[f_readDatabase_ProjectTemplate]]></Name>
 					<X>-780</X><Y>170</Y>
@@ -261,44 +210,12 @@ f_setGenericProfiles_data();
 //f_setBuilding_data();
 
 //Set the EA data
+//f_setSolarfarm_data();
+//f_setWindfarm_data();
+//f_setBattery_data();
 
 //Set the remaining gis object data
-f_setNeighbourhood_data();]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1726157030630</Id>
-					<Name><![CDATA[f_setBuilding_data]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-690</X><Y>315</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[
-//Get survey company buildings
-List<Tuple> rowsSurveyCompanyBuildings = selectFrom(buildings).where(buildings.gc_id.ne("0")).where(buildings.gc_id.isNotEmpty()).list();		
-
-for(Tuple row: rowsSurveyCompanyBuildings){
-	c_SurveyCompanyBuilding_data.add(f_buildingRecordBuilder(row));
-}
-
-//Get generic company buildings
-//List<Tuple> rowsGenericCompanyBuildings = selectFrom(buildings).where(buildings.gc_id.eq("0")).where(buildings.gc_id.isEmpty()).list();		
-List<Tuple> rowsGenericCompanyBuildings = selectFrom(buildings).list();		
-
-for(Tuple row: rowsGenericCompanyBuildings){
-	c_GenericCompanyBuilding_data.add(f_buildingRecordBuilder(row));
-}
-
-
-//Get generic company buildings
-List<Tuple> rowsHouseBuildings = selectFrom(buildings).where(buildings.purpose.contains("woonfunctie")).list();		
-
-for(Tuple row: rowsHouseBuildings){
-	c_HouseBuilding_data.add(f_buildingRecordBuilder(row));
-}]]></Body>
+//f_setNeighbourhood_data();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -319,9 +236,9 @@ for(Tuple row: rowsHouseBuildings){
 Building_data building_data_record = Building_data.builder().
 
 address_id(row.get( buildings.address_id )).
-building_id(row.get( buildings.building_id )).
-pand_nr(row.get( buildings.pand_nr )).
-pandcluster_nr(row.get( buildings.pandcluster_nr )).
+building_id(row.get( buildings.building_id ).replace("panduid.","")).
+//pand_nr(row.get( buildings.pand_nr )).
+//pandcluster_nr(row.get( buildings.pandcluster_nr )).
 streetname(row.get( buildings.streetname )).
 house_number(row.get( buildings.house_number )).
 house_letter(row.get( buildings.house_letter )).
@@ -333,13 +250,13 @@ status(row.get( buildings.status )).
 purpose(row.get( buildings.purpose )).
 cumulative_floor_surface_m2(row.get( buildings.cumulative_floor_surface_m2 )).
 polygon_area_m2(row.get( buildings.polygon_area_m2 )).
-gc_id(row.get( buildings.gc_id )).
+//gc_id(row.get( buildings.gc_id )).
 annotation(row.get( buildings.annotation )).
 extra_info(row.get( buildings.extra_info )).
-contracted_capacity_kw(row.get( buildings.contracted_capacity_kw )).
-electricity_consumption_kwhpa(row.get( buildings.electricity_consumption_kwhpa )).
-gas_consumption_kwhpa(row.get( buildings.gas_consumption_kwhpa )).
-energy_label(row.get( buildings.energy_label )).
+//contracted_capacity_kw(row.get( buildings.contracted_capacity_kw )).
+//electricity_consumption_kwhpa(row.get( buildings.electricity_consumption_kwhpa )).
+//gas_consumption_kwhpa(row.get( buildings.gas_consumption_kwhpa )).
+//energy_label(row.get( buildings.energy_label )).
 trafo_id(row.get( buildings.trafo_id )).
 latitude(row.get( buildings.latitude )).
 longitude(row.get( buildings.longitude )).
@@ -373,8 +290,9 @@ for(Tuple row: rows){
 	parent_node_id(row.get( gridnodes.parent_node_id )).
 	is_capacity_available(row.get( gridnodes.is_capacity_available )).
 	capacity_kw(row.get( gridnodes.capacity_kw )).
-	subscope(row.get( gridnodes.subscope )).
-	service_area_polygon(row.get( gridnodes.service_area_polygon )).build());
+	//subscope(row.get( gridnodes.subscope )).
+	//service_area_polygon(row.get( gridnodes.service_area_polygon )).
+	build());
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -492,8 +410,8 @@ for(Tuple row : rows){
 		contracted_feed_in_capacity_kw(row.get(windfarms.contracted_feed_in_capacity_kw)).
 		latitude(row.get(windfarms.latitude)).
 		longitude(row.get(windfarms.longitude)).
-		polygon(row.get(windfarms.polygon))
-		.build());
+		polygon(row.get(windfarms.polygon)).
+		build());
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -696,7 +614,7 @@ for(Tuple row : rows){
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1727177860192</Id>
-					<Name><![CDATA[f_setBuilding_data_Example2]]></Name>
+					<Name><![CDATA[f_setBuilding_data]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-690</X><Y>335</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -729,6 +647,63 @@ for(Tuple row : rows){
 }
 
 ]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1738938959965</Id>
+					<Name><![CDATA[f_setGenericProfiles_data]]></Name>
+					<X>-690</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[List<Double> argumentsList = selectFrom( profiles ).list( profiles.t_h );
+
+// Various demand profiles
+
+List<Double> houseEdemandList = selectFrom( profiles ).list( profiles.house_e_demand_other );
+List<Double> houseHDHWdemandList = selectFrom( profiles ).list( profiles.house_h_demand_hot_water );
+List<Double> buildingEdemandList = selectFrom( profiles ).list( profiles.building_e_demand_other );
+List<Double> buildingHeatDemandList = selectFrom( profiles ).list( profiles.building_h_demand );
+List<Double> industrySteelEdemandList = selectFrom( profiles ).list( profiles.industry_steel_e_demand );
+List<Double> industrySteelHdemandList = selectFrom( profiles ).list( profiles.industry_steel_h_demand );
+List<Double> industryOtherEdemandList = selectFrom( profiles ).list( profiles.industry_other_e_demand );
+List<Double> industryOtherHdemandList = selectFrom( profiles ).list( profiles.industry_other_h_demand );
+List<Double> logisticsFleetEdemandList = selectFrom( profiles ).list( profiles.logistics_fleet_e_hgv );     
+ 
+// Weather data
+List<Double> windList = selectFrom( profiles ).list( profiles.wind_e_prod_normalized );
+List<Double> solarList = selectFrom( profiles ).list( profiles.solar_e_prod_normalized );
+List<Double> tempList = selectFrom( profiles ).list( profiles.ambient_temperature_deg_c );
+List<Double> epexList = selectFrom( profiles ).list( profiles.day_ahead_price_eur_mwh ); 
+
+//Maximums
+double buildingEdemandList_maximum = Collections.max(buildingEdemandList);
+double buildingHeatDemandList_maximum = Collections.max(buildingHeatDemandList);
+
+//Create Profiles_data object
+genericProfiles_data = Profiles_data.builder().
+argumentsList(argumentsList).
+houseEdemandList(houseEdemandList).
+houseHDHWdemandList(houseHDHWdemandList).
+buildingEdemandList(buildingEdemandList).
+buildingHeatDemandList(buildingHeatDemandList).
+industrySteelEdemandList(industrySteelEdemandList).
+industrySteelHdemandList(industrySteelHdemandList).
+industryOtherEdemandList(industryOtherEdemandList).
+industryOtherHdemandList(industryOtherHdemandList).
+logisticsFleetEdemandList(logisticsFleetEdemandList).
+windList(windList).
+solarList(solarList).
+tempList(tempList).
+epexList(epexList).
+
+//Maximums
+buildingEdemandList_maximum(buildingEdemandList_maximum).
+buildingHeatDemandList_maximum(buildingHeatDemandList_maximum).
+
+build();]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -819,6 +794,9 @@ for(Tuple row : rows){
 						<Parameter>
 							<Name><![CDATA[settings]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[map_scale]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -826,7 +804,7 @@ for(Tuple row : rows){
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<InEnvironment>true</InEnvironment>	
-					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<InitialLocationType>XYZ</InitialLocationType>
 					<XCode Class="CodeValue">
 						<Code><![CDATA[0]]></Code>
 					</XCode>
@@ -842,12 +820,6 @@ for(Tuple row : rows){
 					<RowCode Class="CodeValue">
 						<Code><![CDATA[0]]></Code>
 					</RowCode>
-					<LatitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LatitudeCode>
-					<LongitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LongitudeCode>
 					<LocationNameCode Class="CodeValue">
 						<Code><![CDATA[""]]></Code>
 					</LocationNameCode>
@@ -922,6 +894,9 @@ import java.io.PrintStream;]]></Import>
 				<Parameter>
 					<Name><![CDATA[settings]]></Name>
 				</Parameter>
+				<Parameter>
+					<Name><![CDATA[map_scale]]></Name>
+				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
 			<GenericParameter>
@@ -975,9 +950,7 @@ import java.io.PrintStream;]]></Import>
 					<RowsCountCode><![CDATA[100]]></RowsCountCode>
 					<NeigborhoodType>MOORE</NeigborhoodType>
 					<LayoutType>USER_DEF</LayoutType>
-					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
 					<NetworkType>USER_DEF</NetworkType>
-					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
 					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
 					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
 					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
@@ -1495,9 +1468,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 					<RowsCountCode><![CDATA[100]]></RowsCountCode>
 					<NeigborhoodType>MOORE</NeigborhoodType>
 					<LayoutType>USER_DEF</LayoutType>
-					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
 					<NetworkType>USER_DEF</NetworkType>
-					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
 					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
 					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
 					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
@@ -1774,7 +1745,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738891</Id>
 					<Name><![CDATA[total_trucks_companies]]></Name>
-					<X>60</X><Y>530</Y>
+					<X>60</X><Y>570</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1798,7 +1769,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738897</Id>
 					<Name><![CDATA[total_vans_companies]]></Name>
-					<X>60</X><Y>510</Y>
+					<X>60</X><Y>550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1971,7 +1942,7 @@ If you don't: False (faster startup with false)]]></Description>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1726495028597</Id>
-					<Name><![CDATA[map_zoomlevel]]></Name>
+					<Name><![CDATA[map_scale]]></Name>
 					<X>60</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2009,6 +1980,78 @@ If you don't: False (faster startup with false)]]></Description>
 						<ParameterEditor>
 							<Id>1727364920379</Id>
 							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1738938737058</Id>
+					<Name><![CDATA[p_selectedResultsUIRadioButton]]></Name>
+					<X>560</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[OL_RadioButtonSetup]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[OL_RadioButtonSetup.DEFAULT_AND_GESPREKSLEIDRAADSUMMARY]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1738938737056</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1738938777508</Id>
+					<Name><![CDATA[total_cars_houses]]></Name>
+					<X>60</X><Y>510</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[Integer]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1738938777506</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1738938777518</Id>
+					<Name><![CDATA[total_cars_companies]]></Name>
+					<X>60</X><Y>530</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[Integer]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1738938777516</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<DelimeterType>NO_DELIMETER</DelimeterType>
@@ -2056,7 +2099,7 @@ Important note: The excel sheet name should always be the same as the anylogic d
 					<Id>1726226738848</Id>
 					<Name><![CDATA[f_overwriteAvgValuesAVGCDatabase]]></Name>
 					<Description><![CDATA[Function used to overwrite parameters in the AVGC_database in the loader ]]></Description>
-					<X>580</X><Y>370</Y>
+					<X>580</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2073,12 +2116,13 @@ if (avg_gas_consumption_house_m3_p_yr != null && avg_gas_consumption_house_m3_p_
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726226738852</Id>
 					<Name><![CDATA[f_initializeRemainingTotals]]></Name>
-					<X>580</X><Y>390</Y>
+					<X>580</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Initialize remaining totals of the area
+loader_ProjectTemplate.v_remainingNumberOfCars = total_cars_companies;
 loader_ProjectTemplate.v_remainingNumberOfVans = total_vans_companies;
 loader_ProjectTemplate.v_remainingNumberOfTrucks = total_trucks_companies;
 loader_ProjectTemplate.v_remainingElectricityDelivery_kWh = total_electricity_consumption_companies_kWh_p_yr;
@@ -2089,7 +2133,7 @@ loader_ProjectTemplate.v_remainingGasConsumption_m3 = total_gas_consumption_comp
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726227634344</Id>
 					<Name><![CDATA[f_setProject_data]]></Name>
-					<X>580</X><Y>230</Y>
+					<X>580</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2108,7 +2152,7 @@ databaseNames(databaseNames).
 //Map centre coordinates
 map_centre_latitude(map_centre_latitude).
 map_centre_longitude(map_centre_longitude).
-map_zoomlevel(map_zoomlevel).
+map_scale(map_scale).
 
 //Project specific actors
 grid_operator(grid_operator).
@@ -2131,7 +2175,7 @@ build();
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726231260460</Id>
 					<Name><![CDATA[f_startModel]]></Name>
-					<X>560</X><Y>170</Y>
+					<X>560</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2156,7 +2200,7 @@ loader_ProjectTemplate.f_startUpLoader_default();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726235796348</Id>
 					<Name><![CDATA[f_projectSpecificInitializeFunctions]]></Name>
-					<X>560</X><Y>350</Y>
+					<X>560</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2172,7 +2216,7 @@ f_initializeRemainingTotals();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726238799507</Id>
 					<Name><![CDATA[f_setSettings]]></Name>
-					<X>580</X><Y>210</Y>
+					<X>580</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2192,7 +2236,7 @@ build();]]></Body>
 					<Id>1726498824702</Id>
 					<Name><![CDATA[f_setUser]]></Name>
 					<Description><![CDATA[set user, only used for survey_type = ZORM]]></Description>
-					<X>580</X><Y>190</Y>
+					<X>580</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2231,7 +2275,7 @@ build();]]></Body>
 				<EmbeddedObject>
 					<Id>1726155990352</Id>
 					<Name><![CDATA[loader_ProjectTemplate]]></Name>
-					<X>560</X><Y>280</Y>
+					<X>560</X><Y>300</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2273,7 +2317,7 @@ build();]]></Body>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<InEnvironment>true</InEnvironment>	
-					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<InitialLocationType>XYZ</InitialLocationType>
 					<XCode Class="CodeValue">
 						<Code><![CDATA[0]]></Code>
 					</XCode>
@@ -2289,12 +2333,6 @@ build();]]></Body>
 					<RowCode Class="CodeValue">
 						<Code><![CDATA[0]]></Code>
 					</RowCode>
-					<LatitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LatitudeCode>
-					<LongitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LongitudeCode>
 					<LocationNameCode Class="CodeValue">
 						<Code><![CDATA[""]]></Code>
 					</LocationNameCode>
@@ -2410,7 +2448,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726231195744</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>550</X><Y>140</Y>
+					<X>550</X><Y>160</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2452,7 +2490,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726235447790</Id>
 					<Name><![CDATA[txt_projectSpecificLoader]]></Name>
-					<X>550</X><Y>250</Y>
+					<X>550</X><Y>270</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2473,7 +2511,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726235740075</Id>
 					<Name><![CDATA[txt_projectSpecificFunctions]]></Name>
-					<X>560</X><Y>320</Y>
+					<X>560</X><Y>340</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2719,10 +2757,19 @@ build();]]></Body>
 					<ParameterName><![CDATA[p_runHeadlessAtStartup]]></ParameterName>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[map_zoomlevel]]></ParameterName>
+					<ParameterName><![CDATA[map_scale]]></ParameterName>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[p_showKPISummary]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[p_selectedResultsUIRadioButton]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[total_cars_houses]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[total_cars_companies]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
