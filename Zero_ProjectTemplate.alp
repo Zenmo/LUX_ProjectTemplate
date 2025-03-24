@@ -66,9 +66,6 @@ public void f_readDatabase(){
 					<Name><![CDATA[zero_Interface]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_createGridnodeTimeSeries]]></Name>
-				</Parameter>
-				<Parameter>
 					<Name><![CDATA[genericProfiles_data]]></Name>
 				</Parameter>
 				<Parameter>
@@ -79,6 +76,9 @@ public void f_readDatabase(){
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[user]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[customProfiles_data]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -257,7 +257,7 @@ extra_info(row.get( buildings.extra_info )).
 //electricity_consumption_kwhpa(row.get( buildings.electricity_consumption_kwhpa )).
 //gas_consumption_kwhpa(row.get( buildings.gas_consumption_kwhpa )).
 //energy_label(row.get( buildings.energy_label )).
-trafo_id(row.get( buildings.trafo_id )).
+gridnode_id(row.get( buildings.gridnode_id )).
 latitude(row.get( buildings.latitude )).
 longitude(row.get( buildings.longitude )).
 polygon(row.get( buildings.polygon )).build();
@@ -280,7 +280,7 @@ return building_data_record;]]></Body>
 for(Tuple row: rows){
 	c_GridNode_data.add(GridNode_data.builder().
 	
-	trafo_id(row.get( gridnodes.gridnode_id )).
+	gridnode_id(row.get( gridnodes.gridnode_id )).
 	fid(row.get( gridnodes.fid )).
 	status(row.get( gridnodes.status )).
 	type(row.get( gridnodes.type )).
@@ -365,7 +365,7 @@ for(Tuple row : rows){
 		house_addition(row.get(solarfarms.house_addition)).
 		postalcode(row.get(solarfarms.postalcode)).
 		city(row.get(solarfarms.city)).
-		trafo_id(row.get(solarfarms.trafo_id)).
+		gridnode_id(row.get(solarfarms.gridnode_id)).
 		initially_active(row.get(solarfarms.initially_active)).
 		capacity_electric_kw(row.get(solarfarms.capacity_electric_kw)).
 		connection_capacity_kw(row.get(solarfarms.connection_capacity_kw)).
@@ -402,7 +402,7 @@ for(Tuple row : rows){
 		house_addition(row.get(windfarms.house_addition)).
 		postalcode(row.get(windfarms.postalcode)).
 		city(row.get(windfarms.city)).
-		trafo_id(row.get(windfarms.trafo_id)).
+		gridnode_id(row.get(windfarms.gridnode_id)).
 		initially_active(row.get(windfarms.initially_active)).
 		capacity_electric_kw(row.get(windfarms.capacity_electric_kw)).
 		connection_capacity_kw(row.get(windfarms.connection_capacity_kw)).
@@ -440,7 +440,7 @@ for(Tuple row : rows){
 		house_addition(row.get(electrolysers.house_addition)).
 		postalcode(row.get(electrolysers.postalcode)).
 		city(row.get(electrolysers.city)).
-		trafo_id(row.get(electrolysers.trafo_id)).
+		gridnode_id(row.get(electrolysers.gridnode_id)).
 		initially_active(row.get(electrolysers.initially_active)).
 		capacity_electric_kw(row.get(electrolysers.capacity_electric_kw)).
 		connection_capacity_kw(row.get(electrolysers.connection_capacity_kw)).
@@ -491,7 +491,7 @@ for(Tuple row : rows){
 		house_addition(row.get(batteries.house_addition)).
 		postalcode(row.get(batteries.postalcode)).
 		city(row.get(batteries.city)).
-		trafo_id(row.get(batteries.trafo_id)).
+		gridnode_id(row.get(batteries.gridnode_id)).
 		initially_active(row.get(batteries.initially_active)).
 		
 		
@@ -558,7 +558,7 @@ for(Tuple row : rows){
 		house_addition(row.get(chargingstations.house_addition)).
 		postalcode(row.get(chargingstations.postalcode)).
 		city(row.get(chargingstations.city)).
-		trafo_id(row.get(chargingstations.trafo_id)).
+		gridnode_id(row.get(chargingstations.gridnode_id)).
 		initially_active(row.get(chargingstations.initially_active)).
 		
 		//Specific
@@ -1999,7 +1999,7 @@ If you don't: False (faster startup with false)]]></Description>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[OL_RadioButtonSetup.DEFAULT_AND_GESPREKSLEIDRAADSUMMARY]]></Code>
+							<Code><![CDATA[OL_RadioButtonSetup.DEFAULT_AND_GESPREKSLEIDRAAD]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1738938737056</Id>
@@ -2296,9 +2296,6 @@ build();]]></Body>
 							<Name><![CDATA[zero_Interface]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_createGridnodeTimeSeries]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[genericProfiles_data]]></Name>
 						</Parameter>
 						<Parameter>
@@ -2309,6 +2306,9 @@ build();]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[user]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[customProfiles_data]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
