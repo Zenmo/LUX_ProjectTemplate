@@ -1534,7 +1534,8 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738861</Id>
 					<Name><![CDATA[map_centre_latitude]]></Name>
-					<X>60</X><Y>210</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>60</X><Y>550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1558,7 +1559,8 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738864</Id>
 					<Name><![CDATA[map_centre_longitude]]></Name>
-					<X>60</X><Y>230</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>60</X><Y>570</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1583,7 +1585,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 					<Id>1726226738867</Id>
 					<Name><![CDATA[grid_operator]]></Name>
 					<Description><![CDATA[Name of the grid operator (Enexis, Liander, Stedin, etc.)]]></Description>
-					<X>60</X><Y>310</Y>
+					<X>60</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1607,7 +1609,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738870</Id>
 					<Name><![CDATA[energy_coop]]></Name>
-					<X>60</X><Y>350</Y>
+					<X>60</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1628,7 +1630,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738873</Id>
 					<Name><![CDATA[energy_supplier]]></Name>
-					<X>60</X><Y>370</Y>
+					<X>60</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1649,7 +1651,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738876</Id>
 					<Name><![CDATA[total_electricity_consumption_companies_kWh_p_yr]]></Name>
-					<X>60</X><Y>430</Y>
+					<X>60</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1673,7 +1675,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738879</Id>
 					<Name><![CDATA[avg_electricity_consumption_house_kWh_p_yr]]></Name>
-					<X>60</X><Y>470</Y>
+					<X>60</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1697,7 +1699,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738882</Id>
 					<Name><![CDATA[avg_gas_consumption_house_m3_p_yr]]></Name>
-					<X>60</X><Y>490</Y>
+					<X>60</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1721,7 +1723,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738885</Id>
 					<Name><![CDATA[total_gas_consumption_companies_m3_p_yr]]></Name>
-					<X>60</X><Y>450</Y>
+					<X>60</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1745,7 +1747,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738891</Id>
 					<Name><![CDATA[total_trucks_companies]]></Name>
-					<X>60</X><Y>570</Y>
+					<X>60</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1769,7 +1771,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726226738897</Id>
 					<Name><![CDATA[total_vans_companies]]></Name>
-					<X>60</X><Y>550</Y>
+					<X>60</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1843,7 +1845,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 				<Variable Class="Parameter">
 					<Id>1726230154997</Id>
 					<Name><![CDATA[hasCongestionPricing]]></Name>
-					<X>80</X><Y>330</Y>
+					<X>80</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1943,7 +1945,8 @@ If you don't: False (faster startup with false)]]></Description>
 				<Variable Class="Parameter">
 					<Id>1726495028597</Id>
 					<Name><![CDATA[map_scale]]></Name>
-					<X>60</X><Y>250</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>60</X><Y>590</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2013,7 +2016,7 @@ If you don't: False (faster startup with false)]]></Description>
 				<Variable Class="Parameter">
 					<Id>1738938777508</Id>
 					<Name><![CDATA[total_cars_houses]]></Name>
-					<X>60</X><Y>510</Y>
+					<X>60</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2037,7 +2040,7 @@ If you don't: False (faster startup with false)]]></Description>
 				<Variable Class="Parameter">
 					<Id>1738938777518</Id>
 					<Name><![CDATA[total_cars_companies]]></Name>
-					<X>60</X><Y>530</Y>
+					<X>60</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2149,10 +2152,10 @@ survey_type(survey_type).
 //Database names
 databaseNames(databaseNames).
 
-//Map centre coordinates
-map_centre_latitude(map_centre_latitude).
-map_centre_longitude(map_centre_longitude).
-map_scale(map_scale).
+//Map centre coordinates (activate to set a custom map start view)
+//map_centre_latitude(map_centre_latitude).
+//map_centre_longitude(map_centre_longitude).
+//map_scale(map_scale).
 
 //Project specific actors
 grid_operator(grid_operator).
@@ -2364,7 +2367,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726226738840</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>50</X><Y>400</Y>
+					<X>50</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2385,7 +2388,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726226738842</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>50</X><Y>180</Y>
+					<X>50</X><Y>520</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2406,7 +2409,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726226738844</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>50</X><Y>280</Y>
+					<X>50</X><Y>200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
