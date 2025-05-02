@@ -797,6 +797,12 @@ build();]]></Body>
 						<Parameter>
 							<Name><![CDATA[map_scale]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_maxNrSelectedGCForExport]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_minSelectedGCForPublicAggregation]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -896,6 +902,12 @@ import java.io.PrintStream;]]></Import>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[map_scale]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_maxNrSelectedGCForExport]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_minSelectedGCForPublicAggregation]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -2131,6 +2143,30 @@ If you don't: False (faster startup with false)]]></Description>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1746108454962</Id>
+					<Name><![CDATA[p_isPublicModel]]></Name>
+					<X>560</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1746108454960</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1726235892488</Id>
 					<Name><![CDATA[databaseNames]]></Name>
@@ -2172,7 +2208,7 @@ Important note: The excel sheet name should always be the same as the anylogic d
 					<Id>1726226738848</Id>
 					<Name><![CDATA[f_overwriteAvgValuesAVGCDatabase]]></Name>
 					<Description><![CDATA[Function used to overwrite parameters in the AVGC_database in the loader ]]></Description>
-					<X>580</X><Y>390</Y>
+					<X>580</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2189,7 +2225,7 @@ if (avg_gas_consumption_house_m3_p_yr != null && avg_gas_consumption_house_m3_p_
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726226738852</Id>
 					<Name><![CDATA[f_initializeRemainingTotals]]></Name>
-					<X>580</X><Y>410</Y>
+					<X>580</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2206,7 +2242,7 @@ loader_ProjectTemplate.v_remainingGasConsumption_m3 = total_gas_consumption_comp
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726227634344</Id>
 					<Name><![CDATA[f_setProject_data]]></Name>
-					<X>580</X><Y>250</Y>
+					<X>580</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2248,7 +2284,7 @@ build();
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726231260460</Id>
 					<Name><![CDATA[f_startModel]]></Name>
-					<X>560</X><Y>190</Y>
+					<X>560</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2273,7 +2309,7 @@ loader_ProjectTemplate.f_startUpLoader_default();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726235796348</Id>
 					<Name><![CDATA[f_projectSpecificInitializeFunctions]]></Name>
-					<X>560</X><Y>370</Y>
+					<X>560</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2289,7 +2325,7 @@ f_initializeRemainingTotals();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726238799507</Id>
 					<Name><![CDATA[f_setSettings]]></Name>
-					<X>580</X><Y>230</Y>
+					<X>580</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2300,7 +2336,9 @@ loader_ProjectTemplate.settings = Settings.builder().
 reloadDatabase(p_reloadDatabase).
 createCurrentElectricityEA(p_createCurrentElectricityEA).
 runHeadlessAtStartup(p_runHeadlessAtStartup).
-
+showKPISummary(p_showKPISummary).
+resultsUIRadioButtonSetup(p_selectedResultsUIRadioButton).
+isPublicModel(p_isPublicModel).
 build();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2309,7 +2347,7 @@ build();]]></Body>
 					<Id>1726498824702</Id>
 					<Name><![CDATA[f_setUser]]></Name>
 					<Description><![CDATA[set user, only used for survey_type = ZORM]]></Description>
-					<X>580</X><Y>210</Y>
+					<X>580</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2348,7 +2386,7 @@ build();]]></Body>
 				<EmbeddedObject>
 					<Id>1726155990352</Id>
 					<Name><![CDATA[loader_ProjectTemplate]]></Name>
-					<X>560</X><Y>300</Y>
+					<X>560</X><Y>320</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2521,7 +2559,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726231195744</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>550</X><Y>160</Y>
+					<X>550</X><Y>180</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2563,7 +2601,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726235447790</Id>
 					<Name><![CDATA[txt_projectSpecificLoader]]></Name>
-					<X>550</X><Y>270</Y>
+					<X>550</X><Y>290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2584,7 +2622,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726235740075</Id>
 					<Name><![CDATA[txt_projectSpecificFunctions]]></Name>
-					<X>560</X><Y>340</Y>
+					<X>560</X><Y>360</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2843,6 +2881,9 @@ build();]]></Body>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[total_cars_companies]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[p_isPublicModel]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
