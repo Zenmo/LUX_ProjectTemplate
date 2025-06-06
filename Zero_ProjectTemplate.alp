@@ -77,9 +77,6 @@ public void f_readDatabase(){
 				<Parameter>
 					<Name><![CDATA[user]]></Name>
 				</Parameter>
-				<Parameter>
-					<Name><![CDATA[customProfiles_data]]></Name>
-				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
 			<GenericParameter>
@@ -257,6 +254,8 @@ extra_info(row.get( buildings.extra_info )).
 //electricity_consumption_kwhpa(row.get( buildings.electricity_consumption_kwhpa )).
 //gas_consumption_kwhpa(row.get( buildings.gas_consumption_kwhpa )).
 //energy_label(row.get( buildings.energy_label )).
+//pv_installed_kwp(pv_installed_kwp).
+//pv_potential_kwp(pv_potential_kwp).
 gridnode_id(row.get( buildings.gridnode_id )).
 latitude(row.get( buildings.latitude )).
 longitude(row.get( buildings.longitude )).
@@ -354,27 +353,27 @@ c_cable_data_MV.add(Cable_data.builder().
 					<Body><![CDATA[List<Tuple> rows = selectFrom(solarfarms).list();
 
 for(Tuple row : rows){
-		c_solarfarm_data.add(Solarfarm_data.builder().
-		
-		gc_id(row.get(solarfarms.gc_id)).
-		gc_name(row.get(solarfarms.gc_name)).
-		owner_id(row.get(solarfarms.owner_id)).
-		streetname(row.get(solarfarms.streetname)).
-		house_number(row.get(solarfarms.house_number)).
-		house_letter(row.get(solarfarms.house_letter)).
-		house_addition(row.get(solarfarms.house_addition)).
-		postalcode(row.get(solarfarms.postalcode)).
-		city(row.get(solarfarms.city)).
-		gridnode_id(row.get(solarfarms.gridnode_id)).
-		initially_active(row.get(solarfarms.initially_active)).
-		capacity_electric_kw(row.get(solarfarms.capacity_electric_kw)).
-		connection_capacity_kw(row.get(solarfarms.connection_capacity_kw)).
-		contracted_delivery_capacity_kw(row.get(solarfarms.contracted_delivery_capacity_kw)).
-		contracted_feed_in_capacity_kw(row.get(solarfarms.contracted_feed_in_capacity_kw)).
-		latitude(row.get(solarfarms.latitude)).
-		longitude(row.get(solarfarms.longitude)).
-		polygon(row.get(solarfarms.polygon))
-		.build());
+	c_solarfarm_data.add(Solarfarm_data.builder().
+	
+	gc_id(row.get(solarfarms.gc_id)).
+	gc_name(row.get(solarfarms.gc_name)).
+	owner_id(row.get(solarfarms.owner_id)).
+	streetname(row.get(solarfarms.streetname)).
+	house_number(row.get(solarfarms.house_number)).
+	house_letter(row.get(solarfarms.house_letter)).
+	house_addition(row.get(solarfarms.house_addition)).
+	postalcode(row.get(solarfarms.postalcode)).
+	city(row.get(solarfarms.city)).
+	gridnode_id(row.get(solarfarms.gridnode_id)).
+	initially_active(row.get(solarfarms.initially_active)).
+	capacity_electric_kw(row.get(solarfarms.capacity_electric_kw)).
+	connection_capacity_kw(row.get(solarfarms.connection_capacity_kw)).
+	contracted_delivery_capacity_kw(row.get(solarfarms.contracted_delivery_capacity_kw)).
+	contracted_feed_in_capacity_kw(row.get(solarfarms.contracted_feed_in_capacity_kw)).
+	latitude(row.get(solarfarms.latitude)).
+	longitude(row.get(solarfarms.longitude)).
+	polygon(row.get(solarfarms.polygon))
+	.build());
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -391,27 +390,27 @@ for(Tuple row : rows){
 					<Body><![CDATA[List<Tuple> rows = selectFrom(windfarms).list();
 
 for(Tuple row : rows){
-		c_windfarm_data.add(Windfarm_data.builder().
-		
-		gc_id(row.get(windfarms.gc_id)).
-		gc_name(row.get(windfarms.gc_name)).
-		owner_id(row.get(windfarms.owner_id)).
-		streetname(row.get(windfarms.streetname)).
-		house_number(row.get(windfarms.house_number)).
-		house_letter(row.get(windfarms.house_letter)).
-		house_addition(row.get(windfarms.house_addition)).
-		postalcode(row.get(windfarms.postalcode)).
-		city(row.get(windfarms.city)).
-		gridnode_id(row.get(windfarms.gridnode_id)).
-		initially_active(row.get(windfarms.initially_active)).
-		capacity_electric_kw(row.get(windfarms.capacity_electric_kw)).
-		connection_capacity_kw(row.get(windfarms.connection_capacity_kw)).
-		contracted_delivery_capacity_kw(row.get(windfarms.contracted_delivery_capacity_kw)).
-		contracted_feed_in_capacity_kw(row.get(windfarms.contracted_feed_in_capacity_kw)).
-		latitude(row.get(windfarms.latitude)).
-		longitude(row.get(windfarms.longitude)).
-		polygon(row.get(windfarms.polygon)).
-		build());
+	c_windfarm_data.add(Windfarm_data.builder().
+	
+	gc_id(row.get(windfarms.gc_id)).
+	gc_name(row.get(windfarms.gc_name)).
+	owner_id(row.get(windfarms.owner_id)).
+	streetname(row.get(windfarms.streetname)).
+	house_number(row.get(windfarms.house_number)).
+	house_letter(row.get(windfarms.house_letter)).
+	house_addition(row.get(windfarms.house_addition)).
+	postalcode(row.get(windfarms.postalcode)).
+	city(row.get(windfarms.city)).
+	gridnode_id(row.get(windfarms.gridnode_id)).
+	initially_active(row.get(windfarms.initially_active)).
+	capacity_electric_kw(row.get(windfarms.capacity_electric_kw)).
+	connection_capacity_kw(row.get(windfarms.connection_capacity_kw)).
+	contracted_delivery_capacity_kw(row.get(windfarms.contracted_delivery_capacity_kw)).
+	contracted_feed_in_capacity_kw(row.get(windfarms.contracted_feed_in_capacity_kw)).
+	latitude(row.get(windfarms.latitude)).
+	longitude(row.get(windfarms.longitude)).
+	polygon(row.get(windfarms.polygon)).
+	build());
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -425,44 +424,40 @@ for(Tuple row : rows){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[		
-List<Tuple> rows = selectFrom(electrolysers).list();
+					<Body><![CDATA[List<Tuple> rows = selectFrom(electrolysers).list();
 
 for(Tuple row : rows){
-		c_electrolyser_data.add(Electrolyser_data.builder().
-		
-		gc_id(row.get(electrolysers.gc_id)).
-		gc_name(row.get(electrolysers.gc_name)).
-		owner_id(row.get(electrolysers.owner_id)).
-		streetname(row.get(electrolysers.streetname)).
-		house_number(row.get(electrolysers.house_number)).
-		house_letter(row.get(electrolysers.house_letter)).
-		house_addition(row.get(electrolysers.house_addition)).
-		postalcode(row.get(electrolysers.postalcode)).
-		city(row.get(electrolysers.city)).
-		gridnode_id(row.get(electrolysers.gridnode_id)).
-		initially_active(row.get(electrolysers.initially_active)).
-		capacity_electric_kw(row.get(electrolysers.capacity_electric_kw)).
-		connection_capacity_kw(row.get(electrolysers.connection_capacity_kw)).
-		contracted_delivery_capacity_kw(row.get(electrolysers.contracted_delivery_capacity_kw)).
-		contracted_feed_in_capacity_kw(row.get(electrolysers.contracted_feed_in_capacity_kw)).
-		
-		default_operation_mode(OL_ElectrolyserOperationMode.valueOf(row.get(electrolysers.default_operation_mode))).
-		conversion_efficiency(row.get(electrolysers.conversion_efficiency)).
-		min_production_ratio(row.get(electrolysers.min_production_ratio)).
-		idle_consumption_power_ratio(row.get(electrolysers.idle_consumption_power_ratio)).
-		start_up_time_shutdown_s(row.get(electrolysers.start_up_time_shutdown_s)).
-		start_up_time_standby_s(row.get(electrolysers.start_up_time_standby_s)).
-		start_up_time_idle_s(row.get(electrolysers.start_up_time_idle_s)).
-		load_change_time_s(row.get(electrolysers.load_change_time_s)).
-		
-		
-		
-		
-		latitude(row.get(electrolysers.latitude)).
-		longitude(row.get(electrolysers.longitude)).
-		polygon(row.get(electrolysers.polygon))
-		.build());
+	c_electrolyser_data.add(Electrolyser_data.builder().
+	
+	gc_id(row.get(electrolysers.gc_id)).
+	gc_name(row.get(electrolysers.gc_name)).
+	owner_id(row.get(electrolysers.owner_id)).
+	streetname(row.get(electrolysers.streetname)).
+	house_number(row.get(electrolysers.house_number)).
+	house_letter(row.get(electrolysers.house_letter)).
+	house_addition(row.get(electrolysers.house_addition)).
+	postalcode(row.get(electrolysers.postalcode)).
+	city(row.get(electrolysers.city)).
+	gridnode_id(row.get(electrolysers.gridnode_id)).
+	initially_active(row.get(electrolysers.initially_active)).
+	capacity_electric_kw(row.get(electrolysers.capacity_electric_kw)).
+	connection_capacity_kw(row.get(electrolysers.connection_capacity_kw)).
+	contracted_delivery_capacity_kw(row.get(electrolysers.contracted_delivery_capacity_kw)).
+	contracted_feed_in_capacity_kw(row.get(electrolysers.contracted_feed_in_capacity_kw)).
+	
+	default_operation_mode(OL_ElectrolyserOperationMode.valueOf(row.get(electrolysers.default_operation_mode))).
+	conversion_efficiency(row.get(electrolysers.conversion_efficiency)).
+	min_production_ratio(row.get(electrolysers.min_production_ratio)).
+	idle_consumption_power_ratio(row.get(electrolysers.idle_consumption_power_ratio)).
+	start_up_time_shutdown_s(row.get(electrolysers.start_up_time_shutdown_s)).
+	start_up_time_standby_s(row.get(electrolysers.start_up_time_standby_s)).
+	start_up_time_idle_s(row.get(electrolysers.start_up_time_idle_s)).
+	load_change_time_s(row.get(electrolysers.load_change_time_s)).
+	
+	latitude(row.get(electrolysers.latitude)).
+	longitude(row.get(electrolysers.longitude)).
+	polygon(row.get(electrolysers.polygon))
+	.build());
 }	
 ]]></Body>
 				</Function>
@@ -546,33 +541,33 @@ for(Tuple row: rows){
 					<Body><![CDATA[List<Tuple> rows = selectFrom(chargingstations).list();
 
 for(Tuple row : rows){
-		c_chargingstation_data.add(Chargingstation_data.builder().
-		
-		//Basic
-		gc_id(row.get(chargingstations.gc_id)).
-		gc_name(row.get(chargingstations.gc_name)).
-		owner_id(row.get(chargingstations.owner_id)).
-		streetname(row.get(chargingstations.streetname)).
-		house_number(row.get(chargingstations.house_number)).
-		house_letter(row.get(chargingstations.house_letter)).
-		house_addition(row.get(chargingstations.house_addition)).
-		postalcode(row.get(chargingstations.postalcode)).
-		city(row.get(chargingstations.city)).
-		gridnode_id(row.get(chargingstations.gridnode_id)).
-		initially_active(row.get(chargingstations.initially_active)).
-		
-		//Specific
-		connection_capacity_kw(row.get(chargingstations.connection_capacity_kw)).
-		is_charging_centre(row.get(chargingstations.is_charging_centre)).
-		vehicle_type(OL_EnergyAssetType.valueOf(row.get(chargingstations.vehicle_type))).
-		number_of_chargers(row.get(chargingstations.number_of_chargers)).
-		power_per_charger_kw(row.get(chargingstations.power_per_charger_kw)).
+	c_chargingstation_data.add(Chargingstation_data.builder().
+	
+	//Basic
+	gc_id(row.get(chargingstations.gc_id)).
+	gc_name(row.get(chargingstations.gc_name)).
+	owner_id(row.get(chargingstations.owner_id)).
+	streetname(row.get(chargingstations.streetname)).
+	house_number(row.get(chargingstations.house_number)).
+	house_letter(row.get(chargingstations.house_letter)).
+	house_addition(row.get(chargingstations.house_addition)).
+	postalcode(row.get(chargingstations.postalcode)).
+	city(row.get(chargingstations.city)).
+	gridnode_id(row.get(chargingstations.gridnode_id)).
+	initially_active(row.get(chargingstations.initially_active)).
+	
+	//Specific
+	connection_capacity_kw(row.get(chargingstations.connection_capacity_kw)).
+	is_charging_centre(row.get(chargingstations.is_charging_centre)).
+	vehicle_type(OL_EnergyAssetType.valueOf(row.get(chargingstations.vehicle_type))).
+	number_of_chargers(row.get(chargingstations.number_of_chargers)).
+	power_per_charger_kw(row.get(chargingstations.power_per_charger_kw)).
 
-		//GIS
-		latitude(row.get(chargingstations.latitude)).
-		longitude(row.get(chargingstations.longitude)).
-		polygon(row.get(chargingstations.polygon))
-		.build());
+	//GIS
+	latitude(row.get(chargingstations.latitude)).
+	longitude(row.get(chargingstations.longitude)).
+	polygon(row.get(chargingstations.polygon))
+	.build());
 }	
 ]]></Body>
 				</Function>
@@ -587,8 +582,7 @@ for(Tuple row : rows){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[
-List<Tuple> rows = selectFrom(parcels).list();
+					<Body><![CDATA[List<Tuple> rows = selectFrom(parcels).list();
 
 for(Tuple row : rows){
 	c_parcel_data.add(Parcel_data.builder().
@@ -658,30 +652,23 @@ for(Tuple row : rows){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[List<Double> argumentsList = selectFrom( profiles ).list( profiles.t_h );
+					<Body><![CDATA[//Profile Arguments
+List<Double> argumentsList = selectFrom( profiles ).list( profiles.t_h );
 
-// Various demand profiles
+//Weather data
+List<Double> tempList = selectFrom( profiles ).list( profiles.ambient_temperature_deg_c );
+List<Double> solarList35DegSouth = selectFrom( profiles ).list( profiles.solar_e_prod_south35deg_normalized);
+List<Double> solarList15DegEastWest = selectFrom( profiles ).list( profiles.solar_e_prod_eastwest15deg_normalized);
+List<Double> windList = selectFrom( profiles ).list( profiles.wind_e_prod_normalized );
 
+//Epex data
+List<Double> epexList = selectFrom( profiles ).list( profiles.day_ahead_price_eur_mwh ); 
+
+//Various demand profile data
 List<Double> houseEdemandList = selectFrom( profiles ).list( profiles.house_e_demand_other );
 List<Double> houseHDHWdemandList = selectFrom( profiles ).list( profiles.house_h_demand_hot_water );
 List<Double> buildingEdemandList = selectFrom( profiles ).list( profiles.building_e_demand_other );
 List<Double> buildingHeatDemandList = selectFrom( profiles ).list( profiles.building_h_demand );
-List<Double> industrySteelEdemandList = selectFrom( profiles ).list( profiles.industry_steel_e_demand );
-List<Double> industrySteelHdemandList = selectFrom( profiles ).list( profiles.industry_steel_h_demand );
-List<Double> industryOtherEdemandList = selectFrom( profiles ).list( profiles.industry_other_e_demand );
-List<Double> industryOtherHdemandList = selectFrom( profiles ).list( profiles.industry_other_h_demand );
-List<Double> logisticsFleetEdemandList = selectFrom( profiles ).list( profiles.logistics_fleet_e_hgv );     
- 
-// Weather data
-List<Double> windList = selectFrom( profiles ).list( profiles.wind_e_prod_normalized );
-List<Double> solarList35DegSouth = selectFrom( profiles ).list( profiles.solar_e_prod_south35deg_normalized);
-List<Double> solarList15DegEastWest = selectFrom( profiles ).list( profiles.solar_e_prod_eastwest15deg_normalized);
-List<Double> tempList = selectFrom( profiles ).list( profiles.ambient_temperature_deg_c );
-List<Double> epexList = selectFrom( profiles ).list( profiles.day_ahead_price_eur_mwh ); 
-
-//Maximums
-double buildingEdemandList_maximum = Collections.max(buildingEdemandList);
-double buildingHeatDemandList_maximum = Collections.max(buildingHeatDemandList);
 
 //Create Profiles_data object
 genericProfiles_data = Profiles_data.builder().
@@ -690,21 +677,11 @@ houseEdemandList(houseEdemandList).
 houseHDHWdemandList(houseHDHWdemandList).
 buildingEdemandList(buildingEdemandList).
 buildingHeatDemandList(buildingHeatDemandList).
-industrySteelEdemandList(industrySteelEdemandList).
-industrySteelHdemandList(industrySteelHdemandList).
-industryOtherEdemandList(industryOtherEdemandList).
-industryOtherHdemandList(industryOtherHdemandList).
-logisticsFleetEdemandList(logisticsFleetEdemandList).
 windList(windList).
 solarList35DegSouth(solarList35DegSouth).
 solarList15DegEastWest(solarList15DegEastWest).
 tempList(tempList).
 epexList(epexList).
-
-//Maximums
-buildingEdemandList_maximum(buildingEdemandList_maximum).
-buildingHeatDemandList_maximum(buildingHeatDemandList_maximum).
-
 build();]]></Body>
 				</Function>
 			</Functions>
@@ -2425,9 +2402,6 @@ build();]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[user]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[customProfiles_data]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
