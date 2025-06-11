@@ -66,9 +66,6 @@ public void f_readDatabase(){
 					<Name><![CDATA[zero_Interface]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[genericProfiles_data]]></Name>
-				</Parameter>
-				<Parameter>
 					<Name><![CDATA[project_data]]></Name>
 				</Parameter>
 				<Parameter>
@@ -76,6 +73,9 @@ public void f_readDatabase(){
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[user]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[defaultProfiles_data]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -198,7 +198,7 @@ zero_Interface.settings = settings;]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Set the profiles data record
-f_setGenericProfiles_data();
+f_setDefaultProfiles_data();
 
 //Set the GridNode data record
 //f_setGridNode_data();
@@ -646,43 +646,44 @@ for(Tuple row : rows){
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1738938959965</Id>
-					<Name><![CDATA[f_setGenericProfiles_data]]></Name>
+					<Name><![CDATA[f_setDefaultProfiles_data]]></Name>
 					<X>-690</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Profile Arguments
-List<Double> argumentsList = selectFrom( profiles ).list( profiles.t_h );
+List<Double> arguments_hr = selectFrom( profiles ).list( profiles.t_h );
 
 //Weather data
-List<Double> tempList = selectFrom( profiles ).list( profiles.ambient_temperature_deg_c );
-List<Double> solarList35DegSouth = selectFrom( profiles ).list( profiles.solar_e_prod_south35deg_normalized);
-List<Double> solarList15DegEastWest = selectFrom( profiles ).list( profiles.solar_e_prod_eastwest15deg_normalized);
-List<Double> windList = selectFrom( profiles ).list( profiles.wind_e_prod_normalized );
+List<Double> ambientTemperatureProfile_degC = selectFrom( profiles ).list( profiles.ambient_temperature_deg_c );
+List<Double> PVProductionProfile35DegSouth_fr = selectFrom( profiles ).list( profiles.solar_e_prod_south35deg_normalized);
+List<Double> PVProductionProfile15DegEastWest_fr = selectFrom( profiles ).list( profiles.solar_e_prod_eastwest15deg_normalized);
+List<Double> windProductionProfile_fr = selectFrom( profiles ).list( profiles.wind_e_prod_normalized );
 
 //Epex data
-List<Double> epexList = selectFrom( profiles ).list( profiles.day_ahead_price_eur_mwh ); 
+List<Double> epexProfile_eurpMWh = selectFrom( profiles ).list( profiles.day_ahead_price_eur_mwh ); 
 
 //Various demand profile data
-List<Double> houseEdemandList = selectFrom( profiles ).list( profiles.house_e_demand_other );
-List<Double> houseHDHWdemandList = selectFrom( profiles ).list( profiles.house_h_demand_hot_water );
-List<Double> buildingEdemandList = selectFrom( profiles ).list( profiles.building_e_demand_other );
-List<Double> buildingHeatDemandList = selectFrom( profiles ).list( profiles.building_h_demand );
+List<Double> defaultHouseElectricityDemandProfile_fr = selectFrom( profiles ).list( profiles.house_e_demand_other );
+List<Double> defaultHouseHotWaterDemandProfile_fr = selectFrom( profiles ).list( profiles.house_h_demand_hot_water );
+List<Double> defaultOfficeElectricityDemandProfile_fr = selectFrom( profiles ).list( profiles.building_e_demand_other );
+List<Double> defaultBuildingHeatDemandProfile_fr = selectFrom( profiles ).list( profiles.building_h_demand );
 
 //Create Profiles_data object
-genericProfiles_data = Profiles_data.builder().
-argumentsList(argumentsList).
-houseEdemandList(houseEdemandList).
-houseHDHWdemandList(houseHDHWdemandList).
-buildingEdemandList(buildingEdemandList).
-buildingHeatDemandList(buildingHeatDemandList).
-windList(windList).
-solarList35DegSouth(solarList35DegSouth).
-solarList15DegEastWest(solarList15DegEastWest).
-tempList(tempList).
-epexList(epexList).
-build();]]></Body>
+defaultProfiles_data = DefaultProfiles_data.builder().
+arguments_hr(arguments_hr).
+ambientTemperatureProfile_degC(ambientTemperatureProfile_degC).
+PVProductionProfile35DegSouth_fr(PVProductionProfile35DegSouth_fr).
+PVProductionProfile15DegEastWest_fr(PVProductionProfile15DegEastWest_fr).
+windProductionProfile_fr(windProductionProfile_fr).
+epexProfile_eurpMWh(epexProfile_eurpMWh).
+defaultHouseElectricityDemandProfile_fr(defaultHouseElectricityDemandProfile_fr).
+defaultHouseHotWaterDemandProfile_fr(defaultHouseHotWaterDemandProfile_fr).
+defaultOfficeElectricityDemandProfile_fr(defaultOfficeElectricityDemandProfile_fr).
+defaultBuildingHeatDemandProfile_fr(defaultBuildingHeatDemandProfile_fr).
+build();
+]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -2152,6 +2153,90 @@ If you don't: False (faster startup with false)]]></Description>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1749628370658</Id>
+					<Name><![CDATA[p_subScope_A]]></Name>
+					<X>560</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1749628370656</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1749628398259</Id>
+					<Name><![CDATA[p_subScope_B]]></Name>
+					<X>560</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1749628398257</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1749628399774</Id>
+					<Name><![CDATA[p_subScope_C]]></Name>
+					<X>560</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1749628399772</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1749628401063</Id>
+					<Name><![CDATA[p_subScope_D]]></Name>
+					<X>560</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1749628401061</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1726235892488</Id>
 					<Name><![CDATA[databaseNames]]></Name>
@@ -2193,7 +2278,7 @@ Important note: The excel sheet name should always be the same as the anylogic d
 					<Id>1726226738848</Id>
 					<Name><![CDATA[f_overwriteAvgValuesAVGCDatabase]]></Name>
 					<Description><![CDATA[Function used to overwrite parameters in the AVGC_database in the loader ]]></Description>
-					<X>580</X><Y>410</Y>
+					<X>580</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2210,7 +2295,7 @@ if (avg_gas_consumption_house_m3_p_yr != null && avg_gas_consumption_house_m3_p_
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726226738852</Id>
 					<Name><![CDATA[f_initializeRemainingTotals]]></Name>
-					<X>580</X><Y>430</Y>
+					<X>580</X><Y>560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2227,7 +2312,7 @@ loader_ProjectTemplate.v_remainingGasConsumption_m3 = total_gas_consumption_comp
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726227634344</Id>
 					<Name><![CDATA[f_setProject_data]]></Name>
-					<X>580</X><Y>270</Y>
+					<X>580</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2269,7 +2354,7 @@ build();
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726231260460</Id>
 					<Name><![CDATA[f_startModel]]></Name>
-					<X>560</X><Y>210</Y>
+					<X>560</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2294,7 +2379,7 @@ loader_ProjectTemplate.f_startUpLoader_default();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726235796348</Id>
 					<Name><![CDATA[f_projectSpecificInitializeFunctions]]></Name>
-					<X>560</X><Y>390</Y>
+					<X>560</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2310,7 +2395,7 @@ f_initializeRemainingTotals();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726238799507</Id>
 					<Name><![CDATA[f_setSettings]]></Name>
-					<X>580</X><Y>250</Y>
+					<X>580</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2332,7 +2417,7 @@ build();]]></Body>
 					<Id>1726498824702</Id>
 					<Name><![CDATA[f_setUser]]></Name>
 					<Description><![CDATA[set user, only used for survey_type = ZORM]]></Description>
-					<X>580</X><Y>230</Y>
+					<X>580</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2371,7 +2456,7 @@ build();]]></Body>
 				<EmbeddedObject>
 					<Id>1726155990352</Id>
 					<Name><![CDATA[loader_ProjectTemplate]]></Name>
-					<X>560</X><Y>320</Y>
+					<X>560</X><Y>450</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2392,9 +2477,6 @@ build();]]></Body>
 							<Name><![CDATA[zero_Interface]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[genericProfiles_data]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[project_data]]></Name>
 						</Parameter>
 						<Parameter>
@@ -2402,6 +2484,9 @@ build();]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[user]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[defaultProfiles_data]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -2541,7 +2626,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726231195744</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>550</X><Y>180</Y>
+					<X>550</X><Y>310</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2583,7 +2668,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726235447790</Id>
 					<Name><![CDATA[txt_projectSpecificLoader]]></Name>
-					<X>550</X><Y>290</Y>
+					<X>550</X><Y>420</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2604,7 +2689,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726235740075</Id>
 					<Name><![CDATA[txt_projectSpecificFunctions]]></Name>
-					<X>560</X><Y>360</Y>
+					<X>560</X><Y>490</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2636,6 +2721,27 @@ build();]]></Body>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[Simulation Settings]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1749628313671</Id>
+					<Name><![CDATA[txt_subScopes]]></Name>
+					<X>550</X><Y>190</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Define the to be simulated subscopes]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -2866,6 +2972,18 @@ build();]]></Body>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[p_isPublicModel]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[p_subScope_A]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[p_subScope_B]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[p_subScope_C]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[p_subScope_D]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
