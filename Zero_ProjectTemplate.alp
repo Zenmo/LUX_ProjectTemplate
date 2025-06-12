@@ -2270,6 +2270,21 @@ Important note: The excel sheet name should always be the same as the anylogic d
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1749712347028</Id>
+					<Name><![CDATA[c_subScopesToSimulate]]></Name>
+					<X>560</X><Y>330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -2278,7 +2293,7 @@ Important note: The excel sheet name should always be the same as the anylogic d
 					<Id>1726226738848</Id>
 					<Name><![CDATA[f_overwriteAvgValuesAVGCDatabase]]></Name>
 					<Description><![CDATA[Function used to overwrite parameters in the AVGC_database in the loader ]]></Description>
-					<X>580</X><Y>540</Y>
+					<X>580</X><Y>600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2295,7 +2310,7 @@ if (avg_gas_consumption_house_m3_p_yr != null && avg_gas_consumption_house_m3_p_
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726226738852</Id>
 					<Name><![CDATA[f_initializeRemainingTotals]]></Name>
-					<X>580</X><Y>560</Y>
+					<X>580</X><Y>620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2312,7 +2327,7 @@ loader_ProjectTemplate.v_remainingGasConsumption_m3 = total_gas_consumption_comp
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726227634344</Id>
 					<Name><![CDATA[f_setProject_data]]></Name>
-					<X>580</X><Y>400</Y>
+					<X>580</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2354,13 +2369,16 @@ build();
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726231260460</Id>
 					<Name><![CDATA[f_startModel]]></Name>
-					<X>560</X><Y>340</Y>
+					<X>560</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Set model user
 f_setUser();
+
+//Subscopes
+f_setSubScopesToSimulate();
 
 //Send settings to the loader
 f_setSettings();
@@ -2379,7 +2397,7 @@ loader_ProjectTemplate.f_startUpLoader_default();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726235796348</Id>
 					<Name><![CDATA[f_projectSpecificInitializeFunctions]]></Name>
-					<X>560</X><Y>520</Y>
+					<X>560</X><Y>580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2395,7 +2413,7 @@ f_initializeRemainingTotals();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726238799507</Id>
 					<Name><![CDATA[f_setSettings]]></Name>
-					<X>580</X><Y>380</Y>
+					<X>580</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2409,6 +2427,7 @@ runHeadlessAtStartup(p_runHeadlessAtStartup).
 showKPISummary(p_showKPISummary).
 resultsUIRadioButtonSetup(p_selectedResultsUIRadioButton).
 isPublicModel(p_isPublicModel).
+subscopesToSimulate(c_subScopesToSimulate).
 build();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2417,7 +2436,7 @@ build();]]></Body>
 					<Id>1726498824702</Id>
 					<Name><![CDATA[f_setUser]]></Name>
 					<Description><![CDATA[set user, only used for survey_type = ZORM]]></Description>
-					<X>580</X><Y>360</Y>
+					<X>580</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2428,6 +2447,29 @@ loader_ProjectTemplate.user = User.builder().
 PROJECT_CLIENT_ID(System.getenv("CLIENT_ID")).
 PROJECT_CLIENT_SECRET(System.getenv("CLIENT_SECRET")).
 build();]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1749712371844</Id>
+					<Name><![CDATA[f_setSubScopesToSimulate]]></Name>
+					<X>560</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[if(p_subScope_A){
+	c_subScopesToSimulate.add("A");
+}
+if(p_subScope_B){
+	c_subScopesToSimulate.add("B");
+}
+if(p_subScope_C){
+	c_subScopesToSimulate.add("C");
+}
+if(p_subScope_D){
+	c_subScopesToSimulate.add("D");
+}]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -2456,7 +2498,7 @@ build();]]></Body>
 				<EmbeddedObject>
 					<Id>1726155990352</Id>
 					<Name><![CDATA[loader_ProjectTemplate]]></Name>
-					<X>560</X><Y>450</Y>
+					<X>560</X><Y>520</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2626,7 +2668,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726231195744</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>550</X><Y>310</Y>
+					<X>550</X><Y>370</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2668,7 +2710,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726235447790</Id>
 					<Name><![CDATA[txt_projectSpecificLoader]]></Name>
-					<X>550</X><Y>420</Y>
+					<X>550</X><Y>490</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2689,7 +2731,7 @@ build();]]></Body>
 				<Text>
 					<Id>1726235740075</Id>
 					<Name><![CDATA[txt_projectSpecificFunctions]]></Name>
-					<X>560</X><Y>490</Y>
+					<X>550</X><Y>550</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
