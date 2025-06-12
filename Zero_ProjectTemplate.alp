@@ -667,6 +667,8 @@ List<Double> epexProfile_eurpMWh = selectFrom( profiles ).list( profiles.day_ahe
 //Various demand profile data
 List<Double> defaultHouseElectricityDemandProfile_fr = selectFrom( profiles ).list( profiles.house_e_demand_other );
 List<Double> defaultHouseHotWaterDemandProfile_fr = selectFrom( profiles ).list( profiles.house_h_demand_hot_water );
+List<Double> defaultHouseCookingDemandProfile_fr = selectFrom( profiles ).list( profiles.house_cooking_demand );
+
 List<Double> defaultOfficeElectricityDemandProfile_fr = selectFrom( profiles ).list( profiles.building_e_demand_other );
 List<Double> defaultBuildingHeatDemandProfile_fr = selectFrom( profiles ).list( profiles.building_h_demand );
 
@@ -680,10 +682,10 @@ windProductionProfile_fr(windProductionProfile_fr).
 epexProfile_eurpMWh(epexProfile_eurpMWh).
 defaultHouseElectricityDemandProfile_fr(defaultHouseElectricityDemandProfile_fr).
 defaultHouseHotWaterDemandProfile_fr(defaultHouseHotWaterDemandProfile_fr).
+defaultHouseCookingDemandProfile_fr(defaultHouseCookingDemandProfile_fr).
 defaultOfficeElectricityDemandProfile_fr(defaultOfficeElectricityDemandProfile_fr).
 defaultBuildingHeatDemandProfile_fr(defaultBuildingHeatDemandProfile_fr).
-build();
-]]></Body>
+build();]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
