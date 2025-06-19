@@ -725,6 +725,7 @@ for(Tuple row: rows){
 
 	String columnName = "CS" + i;
 	List<String> chargerProfile_list = selectValues(String.class, "SELECT " + columnName + " FROM chargerprofiles;");
+	chargerProfile_list.removeIf(e -> e == null); // Remove null values
 	
 	c_chargerProfiles_data.add(ChargerProfile_data.builder().
 	chargerProfileID("ChargerProfile: " + columnName).
