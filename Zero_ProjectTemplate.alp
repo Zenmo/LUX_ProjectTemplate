@@ -199,20 +199,26 @@ zero_Interface.settings = settings;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Set the profiles data record
 f_setDefaultProfiles_data();
+//f_setChargerProfiles_data();
 
 //Set the GridNode data record
-//f_setGridNode_data();
+f_setGridNode_data();
 
 //Set the consumption buildings data
-//f_setBuilding_data();
+f_setBuilding_data();
 
 //Set the EA data
 //f_setSolarfarm_data();
 //f_setWindfarm_data();
+//f_setElectrolyser_data();
 //f_setBattery_data();
+//f_setChargingstation_data();
 
 //Set the remaining gis object data
-//f_setNeighbourhood_data();]]></Body>
+f_setNeighbourhood_data();
+//f_setParkingSpace_data();
+//f_setParcel_data();
+//f_setCable_data();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -1300,11 +1306,13 @@ t_scenarioDescription.setText(t_scenario_XXX);]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1725976724055</Id>
 					<Name><![CDATA[f_setSliderPresets_ProjectTemplate]]></Name>
-					<X>-670</X><Y>720</Y>
+					<X>-670</X><Y>740</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[f_initialisationOfResidentialSliders();
+f_updateMainInterfaceSliders();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
