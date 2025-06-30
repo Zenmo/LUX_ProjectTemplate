@@ -3199,24 +3199,6 @@ if(p_subScope_D){
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
 		<Resource>
-			<Id>1658477089995</Id>
-			<Path><![CDATA[data_Generic/AlbatrossProcessedVehicleTrips.xlsx]]></Path>
-			<ReferencedFromUserCode>true</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1658477089994</Id>
-			<Path><![CDATA[data_Generic/inputECookerPatterns.xlsx]]></Path>
-			<ReferencedFromUserCode>true</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1658477089993</Id>
-			<Path><![CDATA[data_Generic/inputTruckTripPatterns.xlsx]]></Path>
-			<ReferencedFromUserCode>true</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
 			<Id>1658477089992</Id>
 			<Path><![CDATA[data_ProjectTemplate/Buildings_ProjectTemplate.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
@@ -3231,6 +3213,24 @@ if(p_subScope_D){
 		<Resource>
 			<Id>1658477089990</Id>
 			<Path><![CDATA[Export_ModelData.xlsx]]></Path>
+			<ReferencedFromUserCode>true</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1751268479138</Id>
+			<Path><![CDATA[data_Generic/AlbatrossProcessedVehicleTrips.csv]]></Path>
+			<ReferencedFromUserCode>true</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1751268479436</Id>
+			<Path><![CDATA[data_Generic/inputECookerPatterns.csv]]></Path>
+			<ReferencedFromUserCode>true</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1751268479468</Id>
+			<Path><![CDATA[data_Generic/inputTruckTripPatterns.csv]]></Path>
 			<ReferencedFromUserCode>true</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
