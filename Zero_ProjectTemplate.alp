@@ -9,7 +9,7 @@
 	<Id>1658477103134</Id>
 	<Name><![CDATA[Zero_ProjectTemplate]]></Name>
 	<EngineVersion>6</EngineVersion>
-	<JavaPackageName><![CDATA[zeroprojecttemplate]]></JavaPackageName>
+	<JavaPackageName><![CDATA[lux_projecttemplate]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Hour]]></ModelTimeUnit>
 	<OptionLists>
 		<OptionList>
@@ -771,7 +771,7 @@ for(Tuple row: rows){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<ActiveObjectClass>
-						<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+						<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 						<ClassName><![CDATA[StartUp_ProjectTemplate]]></ClassName>
 					</ActiveObjectClass>
 				</ContainerLink>
@@ -786,12 +786,12 @@ for(Tuple row: rows){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<ActiveObjectClass>
-						<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+						<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 						<ClassName><![CDATA[Interface_ProjectTemplate]]></ClassName>
 					</ActiveObjectClass>
 					<GenericParameterSubstitute>
 						<GenericParameterSubstituteReference>
-							<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+							<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 							<ClassName><![CDATA[Interface_ProjectTemplate]]></ClassName>
 							<ItemName><![CDATA[1722364114820]]></ItemName>
 						</GenericParameterSubstituteReference>
@@ -1398,7 +1398,7 @@ uI_Tabs.pop_tabEHub.get(0).getSl_collectiveBattery_MWh().setValue(0, true);]]></
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<ActiveObjectClass>
-						<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+						<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 						<ClassName><![CDATA[Loader_ProjectTemplate]]></ClassName>
 					</ActiveObjectClass>
 				</ContainerLink>
@@ -1411,7 +1411,7 @@ uI_Tabs.pop_tabEHub.get(0).getSl_collectiveBattery_MWh().setValue(0, true);]]></
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<ActiveObjectClass>
-						<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+						<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 						<ClassName><![CDATA[StartUp_ProjectTemplate]]></ClassName>
 					</ActiveObjectClass>
 				</ContainerLink>
@@ -1511,7 +1511,7 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
-							<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+							<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 							<ClassName><![CDATA[logo holon.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
@@ -2564,12 +2564,12 @@ if(p_subScope_D){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<ActiveObjectClass>
-						<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+						<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 						<ClassName><![CDATA[Loader_ProjectTemplate]]></ClassName>
 					</ActiveObjectClass>
 					<GenericParameterSubstitute>
 						<GenericParameterSubstituteReference>
-							<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+							<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 							<ClassName><![CDATA[Loader_ProjectTemplate]]></ClassName>
 							<ItemName><![CDATA[1709049506459]]></ItemName>
 						</GenericParameterSubstituteReference>
@@ -2890,7 +2890,7 @@ if(p_subScope_D){
 				<ConnectOnStartup>true</ConnectOnStartup>
 				<DatabaseName><![CDATA[]]></DatabaseName>
 				<ResourceReference>
-					<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[data_ProjectTemplate/GridNodes_ProjectTemplate.xlsx]]></ClassName>
 				</ResourceReference>
 				<Host><![CDATA[localhost]]></Host>
@@ -2911,7 +2911,7 @@ if(p_subScope_D){
 				<ConnectOnStartup>true</ConnectOnStartup>
 				<DatabaseName><![CDATA[]]></DatabaseName>
 				<ResourceReference>
-					<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[data_Generic/db_profiles.xlsx]]></ClassName>
 				</ResourceReference>
 				<Host><![CDATA[localhost]]></Host>
@@ -2932,7 +2932,7 @@ if(p_subScope_D){
 				<ConnectOnStartup>true</ConnectOnStartup>
 				<DatabaseName><![CDATA[]]></DatabaseName>
 				<ResourceReference>
-					<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[data_ProjectTemplate/Buildings_ProjectTemplate.xlsx]]></ClassName>
 				</ResourceReference>
 				<Host><![CDATA[localhost]]></Host>
@@ -2953,7 +2953,7 @@ if(p_subScope_D){
 				<ConnectOnStartup>true</ConnectOnStartup>
 				<DatabaseName><![CDATA[]]></DatabaseName>
 				<ResourceReference>
-					<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[data_ProjectTemplate/Neighbourhoods_ProjectTemplate.xlsx]]></ClassName>
 				</ResourceReference>
 				<Host><![CDATA[localhost]]></Host>
@@ -2964,7 +2964,7 @@ if(p_subScope_D){
 			<TableImportSettings>
 				<Id>1658477089981</Id>
 				<TableReference>
-					<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[gridnodes]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
@@ -2974,7 +2974,7 @@ if(p_subScope_D){
 			<TableImportSettings>
 				<Id>1658477089980</Id>
 				<TableReference>
-					<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[profiles]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>1</ConnectionIndex>
@@ -2984,7 +2984,7 @@ if(p_subScope_D){
 			<TableImportSettings>
 				<Id>1658477089979</Id>
 				<TableReference>
-					<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[buildings]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>2</ConnectionIndex>
@@ -2994,7 +2994,7 @@ if(p_subScope_D){
 			<TableImportSettings>
 				<Id>1658477089978</Id>
 				<TableReference>
-					<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[neighbourhoods]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>3</ConnectionIndex>
@@ -3061,7 +3061,7 @@ if(p_subScope_D){
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
-							<PackageName><![CDATA[zeroprojecttemplate]]></PackageName>
+							<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 							<ClassName><![CDATA[logo_zenmo.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
