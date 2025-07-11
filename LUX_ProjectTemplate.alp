@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.5.202506190548" AlpVersion="8.9.5">
 <Model>
 	<Id>1658477103134</Id>
-	<Name><![CDATA[Zero_ProjectTemplate]]></Name>
+	<Name><![CDATA[LUX_ProjectTemplate]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[lux_projecttemplate]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Hour]]></ModelTimeUnit>
@@ -172,7 +172,7 @@ public void f_readDatabase(){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726134544288</Id>
 					<Name><![CDATA[f_createInterface_ProjectTemplate]]></Name>
-					<X>30</X><Y>720</Y>
+					<X>30</X><Y>950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -309,36 +309,20 @@ for(Tuple row: rows){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//LV cables
-List<Tuple> rowsLV = selectFrom(lv_cables).list();
+List<Tuple> rowsCables = selectFrom(cables).list();
 
-for(Tuple rowLV : rowsLV){
+for(Tuple rowCable : rowsCables){
 
-c_cable_data_LV.add(Cable_data.builder().	
-	fid(rowLV.get(lv_cables.fid)).
-	status(rowLV.get(lv_cables.status)).
-	nominal_voltage_v(rowLV.get(lv_cables.nominal_voltage_v)).
-	label(rowLV.get(lv_cables.label)).
-	description(rowLV.get(lv_cables.description)).
-	//latitude(rowLV.get(lv_cables.latitude)).
-	//longitude(rowLV.get(lv_cables.longitude)).
-	line(rowLV.get(lv_cables.line))
-	.build());
-}
-
-//MV cables
-List<Tuple> rowsMV = selectFrom(mv_cables).list();
-
-for(Tuple rowMV : rowsMV){
-
-c_cable_data_MV.add(Cable_data.builder().	
-	fid(rowMV.get(mv_cables.fid)).
-	status(rowMV.get(mv_cables.status)).
-	nominal_voltage_v(rowMV.get(mv_cables.nominal_voltage_v)).
-	label(rowMV.get(mv_cables.label)).
-	description(rowMV.get(mv_cables.description)).
-	//latitude(rowMV.get(mv_cables.latitude)).
-	//longitude(rowMV.get(mv_cables.longitude)).
-	line(rowMV.get(mv_cables.line))
+c_cable_data.add(Cable_data.builder().	
+	fid(rowCable.get(cables.fid)).
+	type(OL_GISObjectType.valueOf(rowCable.get(cables.type))).
+	status(rowCable.get(cables.status)).
+	nominal_voltage_v(rowCable.get(cables.nominal_voltage_v)).
+	label(rowCable.get(cables.label)).
+	description(rowCable.get(cables.description)).
+	//latitude(rowCable.get(cables.latitude)).
+	//longitude(rowCable.get(cables.longitude)).
+	line(rowCable.get(cables.line))
 	.build());
 }]]></Body>
 				</Function>
@@ -780,7 +764,7 @@ for(Tuple row: rows){
 				<EmbeddedObject>
 					<Id>1726134503173</Id>
 					<Name><![CDATA[interface_ProjectTemplate]]></Name>
-					<X>30</X><Y>750</Y>
+					<X>30</X><Y>920</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
