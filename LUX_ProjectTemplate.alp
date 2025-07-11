@@ -308,7 +308,7 @@ for(Tuple row: rows){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//LV cables
+					<Body><![CDATA[//Cables
 List<Tuple> rowsCables = selectFrom(cables).list();
 
 for(Tuple rowCable : rowsCables){
