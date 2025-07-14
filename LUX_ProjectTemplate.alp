@@ -257,7 +257,7 @@ extra_info(row.get( buildings.extra_info )).
 //contracted_capacity_kw(row.get( buildings.contracted_capacity_kw )).
 //electricity_consumption_kwhpa(row.get( buildings.electricity_consumption_kwhpa )).
 //gas_consumption_kwhpa(row.get( buildings.gas_consumption_kwhpa )).
-//energy_label(row.get( buildings.energy_label )).
+//energy_label(OL_GridConnectionIsolationLabel.valueOf(row.get( buildings.energy_label ))).
 //pv_installed_kwp(pv_installed_kwp).
 //pv_potential_kwp(pv_potential_kwp).
 gridnode_id(row.get( buildings.gridnode_id )).
@@ -2113,7 +2113,7 @@ If you don't: False (faster startup with false)]]></Description>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[OL_RadioButtonSetup.DEFAULT_AND_GESPREKSLEIDRAAD]]></Code>
+							<Code><![CDATA[OL_RadioButtonSetup.DEFAULT]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1738938737056</Id>
