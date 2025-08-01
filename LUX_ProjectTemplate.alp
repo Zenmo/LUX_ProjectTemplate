@@ -249,7 +249,7 @@ city(row.get( buildings.city )).
 build_year(row.get( buildings.build_year )).	
 status(row.get( buildings.status )).
 purpose(row.get( buildings.purpose )).
-cumulative_floor_surface_m2(row.get( buildings.cumulative_floor_surface_m2 )).
+address_floor_surface_m2(row.get( buildings.address_floor_surface_m2 )).
 polygon_area_m2(row.get( buildings.polygon_area_m2 )).
 //gc_id(row.get( buildings.gc_id )).
 annotation(row.get( buildings.annotation )).
@@ -462,32 +462,31 @@ for(Tuple row : rows){
 					<Body><![CDATA[List<Tuple> rows = selectFrom(batteries).list();
 
 for(Tuple row : rows){
-		c_battery_data.add(Battery_data.builder().
-		
-		gc_id(row.get(batteries.gc_id)).
-		gc_name(row.get(batteries.gc_name)).
-		owner_id(row.get(batteries.owner_id)).
-		streetname(row.get(batteries.streetname)).
-		house_number(row.get(batteries.house_number)).
-		house_letter(row.get(batteries.house_letter)).
-		house_addition(row.get(batteries.house_addition)).
-		postalcode(row.get(batteries.postalcode)).
-		city(row.get(batteries.city)).
-		gridnode_id(row.get(batteries.gridnode_id)).
-		initially_active(row.get(batteries.initially_active)).
-		
-		
-		capacity_electric_kw(row.get(batteries.capacity_electric_kw)).
-		connection_capacity_kw(row.get(batteries.connection_capacity_kw)).
-		contracted_delivery_capacity_kw(row.get(batteries.contracted_delivery_capacity_kw)).
-		contracted_feed_in_capacity_kw(row.get(batteries.contracted_feed_in_capacity_kw)).
-		
-		storage_capacity_kwh(row.get(batteries.storage_capacity_kwh)).
-		default_operation_mode(row.get(batteries.default_operation_mode)).
-		latitude(row.get(batteries.latitude)).
-		longitude(row.get(batteries.longitude)).
-		polygon(row.get(batteries.polygon))
-		.build());
+	c_battery_data.add(Battery_data.builder().
+	
+	gc_id(row.get(batteries.gc_id)).
+	gc_name(row.get(batteries.gc_name)).
+	owner_id(row.get(batteries.owner_id)).
+	streetname(row.get(batteries.streetname)).
+	house_number(row.get(batteries.house_number)).
+	house_letter(row.get(batteries.house_letter)).
+	house_addition(row.get(batteries.house_addition)).
+	postalcode(row.get(batteries.postalcode)).
+	city(row.get(batteries.city)).
+	gridnode_id(row.get(batteries.gridnode_id)).
+	initially_active(row.get(batteries.initially_active)).
+	
+	capacity_electric_kw(row.get(batteries.capacity_electric_kw)).
+	connection_capacity_kw(row.get(batteries.connection_capacity_kw)).
+	contracted_delivery_capacity_kw(row.get(batteries.contracted_delivery_capacity_kw)).
+	contracted_feed_in_capacity_kw(row.get(batteries.contracted_feed_in_capacity_kw)).
+	
+	storage_capacity_kwh(row.get(batteries.storage_capacity_kwh)).
+	operation_mode(OL_BatteryOperationMode.valueOf(row.get(batteries.operation_mode))).
+	latitude(row.get(batteries.latitude)).
+	longitude(row.get(batteries.longitude)).
+	polygon(row.get(batteries.polygon))
+	.build());
 }	]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
