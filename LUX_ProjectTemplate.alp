@@ -822,6 +822,12 @@ for(Tuple row: rows){
 						<Parameter>
 							<Name><![CDATA[p_minSelectedGCForPublicAggregation]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[b_inEnergyHubSelectionMode]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[b_inEnergyHubMode]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -931,6 +937,12 @@ import java.io.PrintStream;]]></Import>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[p_currentActiveInfoBubble]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[b_inEnergyHubSelectionMode]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[b_inEnergyHubMode]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -1193,7 +1205,7 @@ e_setScenarioToCustom.restart();
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1724417668993</Id>
 					<Name><![CDATA[f_projectSpecificSettings_ProjectTemplate]]></Name>
-					<X>-670</X><Y>230</Y>
+					<X>-660</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1296,15 +1308,13 @@ t_scenarioDescription.setText(t_scenario_XXX);]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[f_initialisationOfResidentialSliders();
-f_updateMainInterfaceSliders();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726068824384</Id>
 					<Name><![CDATA[f_projectSpecificStyling_ProjectTemplate]]></Name>
-					<X>-670</X><Y>250</Y>
+					<X>-660</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1340,13 +1350,7 @@ uI_Tabs.pop_tabElectricity.get(0).getWindSlider().setValue(0, true);
 
 uI_Tabs.pop_tabHeating.get(0).getSliderHeatDemandSlidersCompaniesHeatDemandReductionCompanies_pct().setValue(0, false);
 
-uI_Tabs.pop_tabEHub.get(0).getCb_curtailment().setSelected(false, false);
-
-uI_Tabs.pop_tabEHub.get(0).getCb_spreadChargingEVs().setSelected(false, false);
-
-uI_Tabs.pop_tabEHub.get(0).getButton_remove_nfato().action();
-
-uI_Tabs.pop_tabEHub.get(0).getSl_collectiveBattery_MWh().setValue(0, true);]]></Body>
+uI_Tabs.pop_tabEHub.get(0).getButton_remove_nfato().action();]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
