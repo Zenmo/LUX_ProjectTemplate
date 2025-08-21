@@ -1205,7 +1205,7 @@ e_setScenarioToCustom.restart();
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1724417668993</Id>
 					<Name><![CDATA[f_projectSpecificSettings_ProjectTemplate]]></Name>
-					<X>-660</X><Y>230</Y>
+					<X>-660</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1303,7 +1303,7 @@ t_scenarioDescription.setText(t_scenario_XXX);]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1725976724055</Id>
 					<Name><![CDATA[f_setSliderPresets_ProjectTemplate]]></Name>
-					<X>-670</X><Y>740</Y>
+					<X>-650</X><Y>750</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1392,7 +1392,7 @@ uI_Tabs.pop_tabEHub.get(0).getButton_remove_nfato().action();]]></Body>
 				<ContainerLink>
 					<Id>1726155991076</Id>
 					<Name><![CDATA[startUp_ProjectTemplate]]></Name>
-					<X>370</X><Y>-100</Y>
+					<X>270</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1489,7 +1489,7 @@ if(!selected_scenario.equals("Custom")){
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<OnClickCode><![CDATA[//Go to website on click
-getExperimentHost().openWebSite("https://holontool.nl/");
+getExperimentHost().openWebSite("https://lux.energy/");
 ]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
