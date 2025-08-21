@@ -1646,56 +1646,6 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1726226738861</Id>
-					<Name><![CDATA[map_centre_latitude]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>60</X><Y>550</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1726226738859</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1726226738864</Id>
-					<Name><![CDATA[map_centre_longitude]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>60</X><Y>570</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1726226738862</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1726226738867</Id>
 					<Name><![CDATA[grid_operator]]></Name>
 					<Description><![CDATA[Name of the grid operator (Enexis, Liander, Stedin, etc.)]]></Description>
@@ -1798,9 +1748,6 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 						<Type><![CDATA[Double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
 							<Id>1726226738877</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -1822,9 +1769,6 @@ getExperimentHost().openWebSite("https://holontool.nl/");
 						<Type><![CDATA[Double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
 							<Id>1726226738880</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -2057,28 +2001,6 @@ If you don't: False (faster startup with false)]]></Description>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1726495028597</Id>
-					<Name><![CDATA[map_scale]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>60</X><Y>590</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1726495028595</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1727364920381</Id>
 					<Name><![CDATA[p_showKPISummary]]></Name>
 					<Description><![CDATA[Boolean which you can use to turn on or off the KPI summary at the end of a simulation.]]></Description>
@@ -2129,19 +2051,17 @@ If you don't: False (faster startup with false)]]></Description>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1738938777508</Id>
-					<Name><![CDATA[total_cars_houses]]></Name>
+					<Name><![CDATA[avg_nr_of_cars_per_house]]></Name>
+					<Description><![CDATA[https://opendata.cbs.nl/#/CBS/nl/dataset/85039NED/table?searchKeywords=motorvoertuigen]]></Description>
 					<X>60</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[Integer]]></Type>
+						<Type><![CDATA[Double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
 							<Id>1738938777506</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -2350,6 +2270,9 @@ Important note: The excel sheet name should always be the same as the anylogic d
 }
 if (avg_gas_consumption_house_m3_p_yr != null && avg_gas_consumption_house_m3_p_yr > 0){
 	loader_ProjectTemplate.avgc_data.p_avgHouseGasConsumption_m3_yr = avg_gas_consumption_house_m3_p_yr;
+}
+if (avg_nr_of_cars_per_house != null && avg_nr_of_cars_per_house >= 0){
+	loader_ProjectTemplate.avgc_data.p_avgNrOfCarsPerHouse = avg_nr_of_cars_per_house;
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2643,27 +2566,6 @@ if(p_subScope_D){
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[Project specific energy consumption totals and averages]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1726226738842</Id>
-					<Name><![CDATA[text4]]></Name>
-					<X>50</X><Y>520</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Project map coordinates]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -3035,7 +2937,7 @@ if(p_subScope_D){
 				<Image>
 					<Id>1726243119961</Id>
 					<Name><![CDATA[zenmo_image]]></Name>
-					<X>600</X><Y>340</Y>
+					<X>630</X><Y>340</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3049,7 +2951,7 @@ if(p_subScope_D){
 					<ImageFiles>
 						<ImageResourceReference>
 							<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
-							<ClassName><![CDATA[logo_zenmo.png]]></ClassName>
+							<ClassName><![CDATA[logo_lux-energy-twin.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
@@ -3059,12 +2961,6 @@ if(p_subScope_D){
 			<Parameters>
 				<Parameter>
 					<ParameterName><![CDATA[project_name]]></ParameterName>
-				</Parameter>
-				<Parameter>
-					<ParameterName><![CDATA[map_centre_latitude]]></ParameterName>
-				</Parameter>
-				<Parameter>
-					<ParameterName><![CDATA[map_centre_longitude]]></ParameterName>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[grid_operator]]></ParameterName>
@@ -3112,16 +3008,13 @@ if(p_subScope_D){
 					<ParameterName><![CDATA[p_runHeadlessAtStartup]]></ParameterName>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[map_scale]]></ParameterName>
-				</Parameter>
-				<Parameter>
 					<ParameterName><![CDATA[p_showKPISummary]]></ParameterName>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[p_selectedResultsUIRadioButton]]></ParameterName>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[total_cars_houses]]></ParameterName>
+					<ParameterName><![CDATA[avg_nr_of_cars_per_house]]></ParameterName>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[total_cars_companies]]></ParameterName>
@@ -3164,12 +3057,6 @@ if(p_subScope_D){
 		<Resource>
 			<Id>1658477089999</Id>
 			<Path><![CDATA[data_Generic/db_profiles.xlsx]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1658477089998</Id>
-			<Path><![CDATA[logo_zenmo.png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
@@ -3219,6 +3106,12 @@ if(p_subScope_D){
 			<Id>1751268479468</Id>
 			<Path><![CDATA[data_Generic/inputTruckTripPatterns.csv]]></Path>
 			<ReferencedFromUserCode>true</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1755769033691</Id>
+			<Path><![CDATA[logo_lux-energy-twin.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
 	</ModelResources>
