@@ -4,7 +4,7 @@
 	         AnyLogic Project File
 *************************************************
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.5.202506190548" AlpVersion="8.9.5">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.6.202509050523" AlpVersion="8.9.6">
 <Model>
 	<Id>1658477103134</Id>
 	<Name><![CDATA[LUX_ProjectTemplate]]></Name>
@@ -178,13 +178,7 @@ public void f_readDatabase(){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//OVERRIDE THE zero_Interface parameter here
-zero_Interface = interface_ProjectTemplate;
-
-//Set parameters/pointers in the interface and resultsUI
-zero_Interface.energyModel = energyModel;
-zero_Interface.uI_Results.energyModel = energyModel;
-zero_Interface.p_selectedProjectType = project_data.project_type();
-zero_Interface.settings = settings;]]></Body>
+zero_Interface = interface_ProjectTemplate;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -763,7 +757,7 @@ for(Tuple row: rows){
 				<EmbeddedObject>
 					<Id>1726134503173</Id>
 					<Name><![CDATA[interface_ProjectTemplate]]></Name>
-					<X>30</X><Y>920</Y>
+					<X>30</X><Y>910</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -799,19 +793,7 @@ for(Tuple row: rows){
 							<Name><![CDATA[energyModel]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[map_centre_latitude]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[map_centre_longitude]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[p_selectedProjectType]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[settings]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[map_scale]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[p_currentActiveInfoBubble]]></Name>
@@ -827,6 +809,12 @@ for(Tuple row: rows){
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[b_inEnergyHubMode]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[user]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[project_data]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -915,19 +903,7 @@ import java.io.PrintStream;]]></Import>
 					<Name><![CDATA[energyModel]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[map_centre_latitude]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[map_centre_longitude]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[p_selectedProjectType]]></Name>
-				</Parameter>
-				<Parameter>
 					<Name><![CDATA[settings]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[map_scale]]></Name>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[p_maxNrSelectedGCForExport]]></Name>
@@ -945,19 +921,10 @@ import java.io.PrintStream;]]></Import>
 					<Name><![CDATA[b_inEnergyHubMode]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[t_scenario_current]]></Name>
+					<Name><![CDATA[user]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[t_scenario_2]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[t_scenario_3]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[t_scenario_XXX]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[t_scenario_custom]]></Name>
+					<Name><![CDATA[project_data]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -1640,7 +1607,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 					<Id>1726226738858</Id>
 					<Name><![CDATA[project_name]]></Name>
 					<Description><![CDATA[Name of the project]]></Description>
-					<X>60</X><Y>60</Y>
+					<X>60</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1665,7 +1632,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 					<Id>1726226738867</Id>
 					<Name><![CDATA[grid_operator]]></Name>
 					<Description><![CDATA[Name of the grid operator (Enexis, Liander, Stedin, etc.)]]></Description>
-					<X>60</X><Y>230</Y>
+					<X>60</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1689,7 +1656,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726226738870</Id>
 					<Name><![CDATA[energy_coop]]></Name>
-					<X>60</X><Y>270</Y>
+					<X>60</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1710,7 +1677,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726226738873</Id>
 					<Name><![CDATA[energy_supplier]]></Name>
-					<X>60</X><Y>290</Y>
+					<X>60</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1731,7 +1698,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726226738876</Id>
 					<Name><![CDATA[total_electricity_consumption_companies_kWh_p_yr]]></Name>
-					<X>60</X><Y>350</Y>
+					<X>60</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1755,7 +1722,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726226738879</Id>
 					<Name><![CDATA[avg_electricity_consumption_house_kWh_p_yr]]></Name>
-					<X>60</X><Y>390</Y>
+					<X>60</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1776,7 +1743,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726226738882</Id>
 					<Name><![CDATA[avg_gas_consumption_house_m3_p_yr]]></Name>
-					<X>60</X><Y>410</Y>
+					<X>60</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1797,7 +1764,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726226738885</Id>
 					<Name><![CDATA[total_gas_consumption_companies_m3_p_yr]]></Name>
-					<X>60</X><Y>370</Y>
+					<X>60</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1821,7 +1788,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726226738891</Id>
 					<Name><![CDATA[total_trucks_companies]]></Name>
-					<X>60</X><Y>490</Y>
+					<X>60</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1845,7 +1812,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726226738897</Id>
 					<Name><![CDATA[total_vans_companies]]></Name>
-					<X>60</X><Y>470</Y>
+					<X>60</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1870,7 +1837,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 					<Id>1726226738900</Id>
 					<Name><![CDATA[project_type]]></Name>
 					<Description><![CDATA[BUSINESSPARK or RESIDENTIAL]]></Description>
-					<X>60</X><Y>80</Y>
+					<X>60</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1895,7 +1862,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 					<Id>1726226738903</Id>
 					<Name><![CDATA[survey_type]]></Name>
 					<Description><![CDATA[Zorm, Excel, etc.]]></Description>
-					<X>60</X><Y>100</Y>
+					<X>60</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1919,7 +1886,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726230154997</Id>
 					<Name><![CDATA[hasCongestionPricing]]></Name>
-					<X>80</X><Y>250</Y>
+					<X>80</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2069,7 +2036,7 @@ If you don't: False (faster startup with false)]]></Description>
 					<Id>1738938777508</Id>
 					<Name><![CDATA[avg_number_of_cars_per_house]]></Name>
 					<Description><![CDATA[https://opendata.cbs.nl/#/CBS/nl/dataset/85039NED/table?searchKeywords=motorvoertuigen]]></Description>
-					<X>60</X><Y>430</Y>
+					<X>60</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2090,7 +2057,7 @@ If you don't: False (faster startup with false)]]></Description>
 				<Variable Class="Parameter">
 					<Id>1738938777518</Id>
 					<Name><![CDATA[total_cars_companies]]></Name>
-					<X>60</X><Y>450</Y>
+					<X>60</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2220,6 +2187,27 @@ If you don't: False (faster startup with false)]]></Description>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1758723774075</Id>
+					<Name><![CDATA[p_userIdToken]]></Name>
+					<X>60</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1758723774073</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1726235892488</Id>
 					<Name><![CDATA[databaseNames]]></Name>
@@ -2232,7 +2220,7 @@ Should be in the format:
 
 --> You can add as much databases as you like.
 Important note: The excel sheet name should always be the same as the anylogic database name!]]></Description>
-					<X>60</X><Y>160</Y>
+					<X>60</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2244,8 +2232,8 @@ Important note: The excel sheet name should always be the same as the anylogic d
 						<CollectionInitializer Class="CodeValue">
 							<Code><![CDATA[//Format: {Excel name, sheet/database name}
 {
-//{"Buildings", "buildings"},
-//{"GridNodes", "gridnodes"},
+{"Buildings", "buildings"},
+{"GridNodes", "gridnodes"},
 {"Neighbourhoods", "neighbourhoods"}
 }
 ]]></Code>
@@ -2548,7 +2536,7 @@ if(p_subScope_D){
 				<Text>
 					<Id>1726226738840</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>50</X><Y>320</Y>
+					<X>50</X><Y>370</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2569,7 +2557,7 @@ if(p_subScope_D){
 				<Text>
 					<Id>1726226738844</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>50</X><Y>200</Y>
+					<X>50</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2590,7 +2578,7 @@ if(p_subScope_D){
 				<Text>
 					<Id>1726226738846</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>50</X><Y>30</Y>
+					<X>50</X><Y>80</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2632,7 +2620,7 @@ if(p_subScope_D){
 				<Text>
 					<Id>1726235269685</Id>
 					<Name><![CDATA[txt_databaseNames]]></Name>
-					<X>50</X><Y>130</Y>
+					<X>50</X><Y>180</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2734,6 +2722,27 @@ if(p_subScope_D){
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+				<Text>
+					<Id>1758723774067</Id>
+					<Name><![CDATA[txt_user]]></Name>
+					<X>50</X><Y>20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[User]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
@@ -2748,6 +2757,7 @@ if(p_subScope_D){
 	<FixedTimeStep>1.0</FixedTimeStep>
 	<RelativeAccuracy>1.0</RelativeAccuracy>
 	<TimeAccuracy>0.1</TimeAccuracy>
+	<InspectionWindowColorTheme>DEFAULT</InspectionWindowColorTheme>
 	<Frame>
 		<Id>1658477089989</Id>
 		<Width>1920</Width>
@@ -2894,20 +2904,29 @@ if(p_subScope_D){
 		<MaximumMemory>4096</MaximumMemory>
 		<ModelTimeProperties>
 			<StopOption><![CDATA[Stop at specified date]]></StopOption>
-			<InitialDate><![CDATA[1672531200000]]></InitialDate>	
+			<InitialDate><![CDATA[1704067200000]]></InitialDate>	
 			<InitialTime><![CDATA[0.0]]></InitialTime>	
-			<FinalDate><![CDATA[1704067200000]]></FinalDate>	
+			<FinalDate><![CDATA[1735603200000]]></FinalDate>	
 			<FinalTime><![CDATA[8760.0]]></FinalTime>	
 		</ModelTimeProperties>
 		<AnimationProperties>
-			<StopNever>false</StopNever>
+			<StopNever>true</StopNever>
 			<ExecutionMode>realTimeScaled</ExecutionMode>
 			<RealTimeScale>5.0</RealTimeScale>
 			<EnableZoomAndPanning>false</EnableZoomAndPanning>
 			<EnableDeveloperPanel>false</EnableDeveloperPanel>
 			<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 		</AnimationProperties>
-		<Inputs>		
+		<Inputs>
+    		<RunConfigurationInput>
+				<Id>1758723843026</Id>
+				<Name><![CDATA[p_userIdToken]]></Name>
+				<InputReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[StartUp_ProjectTemplate]]></ClassName>
+					<ItemName><![CDATA[p_userIdToken]]></ItemName>
+				</InputReference>
+    		</RunConfigurationInput>		
 		</Inputs>
 		<Outputs>
 		</Outputs>
@@ -3027,6 +3046,9 @@ if(p_subScope_D){
 				<Parameter>
 					<ParameterName><![CDATA[p_subScope_D]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[p_userIdToken]]></ParameterName>
+				</Parameter>
 			</Parameters>
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -3037,11 +3059,11 @@ if(p_subScope_D){
 				<RealTimeScale>5.0</RealTimeScale>
 			</PresentationProperties>
 			<ModelTimeProperties>
-				<StopOption><![CDATA[Stop at specified date]]></StopOption>
+				<StopOption><![CDATA[Never]]></StopOption>
 				<InitialDate><![CDATA[1704067200000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1735602300000]]></FinalDate>
-				<FinalTime><![CDATA[8759.75]]></FinalTime>
+				<FinalDate><![CDATA[1735603200000]]></FinalDate>
+				<FinalTime><![CDATA[8760.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>	
@@ -3185,5 +3207,7 @@ if(p_subScope_D){
 	<Uuid>e6625695-25a2-43d0-9056-1e9a1a594b1e</Uuid>
 	<Uuid>91990287-4edf-4e38-aa6c-66d0e906807b</Uuid>
 	<Uuid>2216cdd0-177c-5678-9e88-dd8b95312234</Uuid>
+	<Uuid>1737c8c6-b526-4dd8-589e-ee4e205b06f4</Uuid>
+	<Uuid>6a43bef6-8b70-4253-a828-82c3ab399655</Uuid>
 </ConvertersApplied>
 </AnyLogicWorkspace>
