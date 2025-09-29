@@ -890,7 +890,11 @@ public void f_setSliderPresets(){
 public void f_projectSpecificStyling(){
 	f_projectSpecificStyling_ProjectTemplate();
 }
-]]></AdditionalClassCode>
+
+@Override
+public ShapeRadioButtonGroup f_getScenarioButtons(){
+	return f_getScenarioButtons_ProjectTemplate();
+}]]></AdditionalClassCode>
 			<Import><![CDATA[//Possibility to turn of traceln
 import java.io.OutputStream;
 import java.io.PrintStream;]]></Import>
@@ -1187,7 +1191,7 @@ e_setScenarioToCustom.restart();
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1724417668993</Id>
 					<Name><![CDATA[f_projectSpecificSettings_ProjectTemplate]]></Name>
-					<X>-660</X><Y>270</Y>
+					<X>-660</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1285,7 +1289,7 @@ t_scenarioDescription.setText(t_scenario_XXX);]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1725976724055</Id>
 					<Name><![CDATA[f_setSliderPresets_ProjectTemplate]]></Name>
-					<X>-650</X><Y>750</Y>
+					<X>-650</X><Y>640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1296,22 +1300,18 @@ t_scenarioDescription.setText(t_scenario_XXX);]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726068824384</Id>
 					<Name><![CDATA[f_projectSpecificStyling_ProjectTemplate]]></Name>
-					<X>-660</X><Y>250</Y>
+					<X>-660</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Project specific styling
 
-//Interface colors
-v_themeColor = new Color(208, 208, 245);
-v_backgroundColor = white;
-
 //Grid node sizes
 v_HVMVNodeSize = 100;
-v_MVMVNodeSize = 50;
+v_MVMVNodeSize = 30;
 v_MVLVNodeSize = 20;
-
+v_LVLVNodeSize = 10;
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1333,6 +1333,20 @@ uI_Tabs.pop_tabElectricity.get(0).getWindSlider().setValue(0, true);
 uI_Tabs.pop_tabHeating.get(0).getSliderHeatDemandSlidersCompaniesHeatDemandReductionCompanies_pct().setValue(0, false);
 
 uI_Tabs.pop_tabEHub.get(0).getButton_remove_nfato().action();]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[ShapeRadioButtonGroup]]></ReturnType>
+					<Id>1759134691313</Id>
+					<Name><![CDATA[f_getScenarioButtons_ProjectTemplate]]></Name>
+					<X>-1010</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[return rb_scenarios_ProjectTemplate;
+
+]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -1464,7 +1478,7 @@ if(!selected_scenario.equals("Custom")){
 				<Image>
 					<Id>1724682548565</Id>
 					<Name><![CDATA[image_projectLogo]]></Name>
-					<X>110</X><Y>10</Y>
+					<X>730</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
