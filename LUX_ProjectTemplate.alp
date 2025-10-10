@@ -1875,7 +1875,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 				<Variable Class="Parameter">
 					<Id>1726226738903</Id>
 					<Name><![CDATA[survey_type]]></Name>
-					<Description><![CDATA[Zorm, Excel, etc.]]></Description>
+					<Description><![CDATA[None, Zorm of Excel]]></Description>
 					<X>60</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1886,7 +1886,7 @@ getExperimentHost().openWebSite("https://lux.energy/");
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[OL_SurveyType.EXCEL]]></Code>
+							<Code><![CDATA[OL_SurveyType.NONE]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1726226738901</Id>
