@@ -232,8 +232,6 @@ Building_data building_data_record = Building_data.builder().
 
 address_id(row.get( buildings.address_id )).
 building_id(row.get( buildings.building_id ).replace("panduid.","")).
-//pand_nr(row.get( buildings.pand_nr )).
-//pandcluster_nr(row.get( buildings.pandcluster_nr )).
 streetname(row.get( buildings.streetname )).
 house_number(row.get( buildings.house_number )).
 house_letter(row.get( buildings.house_letter )).
@@ -254,6 +252,7 @@ extra_info(row.get( buildings.extra_info )).
 //energy_label(OL_GridConnectionIsolationLabel.valueOf(row.get( buildings.energy_label ))).
 //pv_installed_kwp(pv_installed_kwp).
 //pv_potential_kwp(pv_potential_kwp).
+//has_private_parking(has_private_parking).
 gridnode_id(row.get( buildings.gridnode_id )).
 latitude(row.get( buildings.latitude )).
 longitude(row.get( buildings.longitude )).
