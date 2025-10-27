@@ -172,7 +172,7 @@ public void f_readDatabase(){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726134544288</Id>
 					<Name><![CDATA[f_createInterface_ProjectTemplate]]></Name>
-					<X>30</X><Y>950</Y>
+					<X>30</X><Y>930</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -775,19 +775,7 @@ for(Tuple row: rows){
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
-							<Name><![CDATA[t_scenario_current]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[t_scenario_2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[t_scenario_3]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[t_scenario_XXX]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[t_scenario_custom]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[energyModel]]></Name>
@@ -815,6 +803,33 @@ for(Tuple row: rows){
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[project_data]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[uI_Company]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[uI_Hydrogen]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[uI_Battery]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[uI_EnergyHub]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rb_scenarios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[t_scenario_current]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[t_scenario_future]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[t_scenario_custom]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_residentialScenario_Current]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -891,10 +906,28 @@ public void f_projectSpecificStyling(){
 	f_projectSpecificStyling_ProjectTemplate();
 }
 
+//Scenarios (Uncomment these if you want to add custom scenario settings
+/*
 @Override
-public ShapeRadioButtonGroup f_getScenarioButtons(){
-	return f_getScenarioButtons_ProjectTemplate();
-}]]></AdditionalClassCode>
+public String[] f_getScenarioOptions(){
+	return f_getScenarioOptions_ProjectTemplate();
+}
+
+@Override
+public String f_setSelectedScenario(){
+	return f_setSelectedScenario_ProjectTemplate();
+}
+
+@Override
+public void f_resetProjectSpecificSlidersAndButtons(){
+	f_resetProjectSpecificSlidersAndButtons_ProjectTemplate();
+}
+
+@Override
+public void f_projectSpecificScenarioSettings(String selectedScenario){
+	f_projectSpecificScenarioSettings_ProjectTemplate(selectedScenario);
+}
+*/]]></AdditionalClassCode>
 			<Import><![CDATA[//Possibility to turn of traceln
 import java.io.OutputStream;
 import java.io.PrintStream;]]></Import>
@@ -929,6 +962,33 @@ import java.io.PrintStream;]]></Import>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[project_data]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[uI_Company]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[uI_Hydrogen]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[uI_Battery]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[uI_EnergyHub]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[rb_scenarios]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[t_scenario_current]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[t_scenario_future]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[t_scenario_custom]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_residentialScenario_Current]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -1023,85 +1083,9 @@ import java.io.PrintStream;]]></Import>
 			<ConnectionsId>1722364114815</ConnectionsId>
 			<Variables>
 				<Variable Class="Parameter">
-					<Id>1724419523225</Id>
-					<Name><![CDATA[t_scenario_current]]></Name>
-					<X>-1005</X><Y>85</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["Het huidige scenario bevat de energie dynamieken van dit moment. \n" +
-"Dit omvat o.a. de huidige zonnepanelen op de daken van gebouwen, \n" +
-"het aantal elektrische voertuigen, de energie- \n" + 
-"consumptie van de panden, en de huidige gasconsumptie \n" + 
-"voor verwarming."]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1724419523223</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1724419523232</Id>
-					<Name><![CDATA[t_scenario_2]]></Name>
-					<X>-1000</X><Y>140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["WORDT NOG NIET ONDERSTEUND"]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1724419523230</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1724419604919</Id>
-					<Name><![CDATA[t_scenario_3]]></Name>
-					<X>-1000</X><Y>195</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["WORDT NOG NIET ONDERSTEUND"]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1724419604917</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1724419829732</Id>
 					<Name><![CDATA[t_scenario_XXX]]></Name>
-					<X>-1000</X><Y>245</Y>
+					<X>-1160</X><Y>560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1122,69 +1106,7 @@ import java.io.PrintStream;]]></Import>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
-				<Variable Class="Parameter">
-					<Id>1724420385230</Id>
-					<Name><![CDATA[t_scenario_custom]]></Name>
-					<X>-1000</X><Y>265</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[""]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1724420385228</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
 			</Variables>
-			<Events>
-				<Event>
-					<Id>1744903711090</Id>
-					<Name><![CDATA[e_setScenarioToCustom]]></Name>
-					<X>-1020</X><Y>320</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="condition" Mode="occuresOnce">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
-						</Timeout>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_HOUR]]></Unit>
-						</Rate>
-						<Id>1658477089985</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1729929600000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
-						</RecurrenceCode>
-						<Condition><![CDATA[b_changeToCustomScenario]]></Condition>
-					</Properties>
-					<Action><![CDATA[rb_scenarios_ProjectTemplate.setValue(1, true);
-
-b_changeToCustomScenario = false;
-e_setScenarioToCustom.restart();
-]]></Action>
-				</Event>
-			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -1197,81 +1119,14 @@ e_setScenarioToCustom.restart();
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Project specific interface initialization settings
-
-//Disable the default scenario buttons
-rb_scenarios.setEnabled(false);
-rb_scenarios.setVisible(false);]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1724419523222</Id>
-					<Name><![CDATA[f_setScenario_2]]></Name>
-					<X>-1020</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[setScenario]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Body><![CDATA[
-//Set the scenario text
-t_scenarioDescription.setText(t_scenario_2);]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1724419535513</Id>
-					<Name><![CDATA[f_setScenario_Current]]></Name>
-					<X>-1020</X><Y>65</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[setScenario]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Body><![CDATA[for (UI_company companyUI : ui_companies){
-	companyUI.b_runningMainInterfaceScenarioSettings = true;
-	companyUI.getRb_scenariosPrivateUI().setValue(setScenario, true);
-	companyUI.b_runningMainInterfaceScenarioSettings = false;
-} 
-
-//Reset specific buttons
-f_resetSpecialSlidersAndButtons();
-
-//Set the scenario text
-t_scenarioDescription.setText(t_scenario_current);]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1724419592217</Id>
-					<Name><![CDATA[f_setScenario_3]]></Name>
-					<X>-1020</X><Y>175</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[
-
-
-
-
-
-
-//Set the scenario text
-t_scenarioDescription.setText(t_scenario_3);]]></Body>
+]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1724419810437</Id>
 					<Name><![CDATA[f_setScenario_XXX]]></Name>
-					<X>-1020</X><Y>225</Y>
+					<X>-1180</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1312,40 +1167,6 @@ v_HVMVNodeSize = 100;
 v_MVMVNodeSize = 30;
 v_MVLVNodeSize = 20;
 v_LVLVNodeSize = 10;
-]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1744903711087</Id>
-					<Name><![CDATA[f_resetSpecialSlidersAndButtons]]></Name>
-					<X>-1020</X><Y>300</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[uI_Tabs.pop_tabMobility.get(0).getSliderMobilityDemandReduction_pct().setValue(0, false);
-
-uI_Tabs.pop_tabElectricity.get(0).getSliderElectricityDemandReduction_pct().setValue(0, false);
-
-uI_Tabs.pop_tabElectricity.get(0).getWindSlider().setValue(0, true);
-
-uI_Tabs.pop_tabHeating.get(0).getSliderHeatDemandSlidersCompaniesHeatDemandReductionCompanies_pct().setValue(0, false);
-
-uI_Tabs.pop_tabEHub.get(0).getButton_remove_nfato().action();]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[ShapeRadioButtonGroup]]></ReturnType>
-					<Id>1759134691313</Id>
-					<Name><![CDATA[f_getScenarioButtons_ProjectTemplate]]></Name>
-					<X>-1010</X><Y>-70</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[return rb_scenarios_ProjectTemplate;
-
 ]]></Body>
 				</Function>
 			</Functions>
@@ -1414,67 +1235,6 @@ uI_Tabs.pop_tabEHub.get(0).getButton_remove_nfato().action();]]></Body>
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
 			<Presentation>
-				<Control Type="RadioButtons">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1724415643323</Id>
-					<Name><![CDATA[rb_scenarios_ProjectTemplate]]></Name>
-					<X>20</X><Y>145</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="380" Height="135">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[b_runningMainInterfaceScenarios = true;
-
-//Set selected scenario string
-String selected_scenario = "";
-
-//Disable traceln
-PrintStream originalPrintStream = f_disableTraceln();
-
-switch(rb_scenarios_ProjectTemplate.getValue()){
-	
-	case 0:
-		selected_scenario = "2024: huidige situatie";
-		f_setScenario_Current(rb_scenarios_ProjectTemplate.getValue());
-
-	break;
-	
-	case 1:
-		selected_scenario = "Custom";
-		t_scenarioDescription.setText(t_scenario_custom);
-	break;
-	
-	default:
-		traceln("Unsupported scenario selected");
-}
-
-//Enable traceln
-f_enableTraceln(originalPrintStream);
-
-//Set scenario name text to the correct scenario
-t_scenarioName.setText("Scenario: " + selected_scenario);
-traceln("Selected scenario: \"" + selected_scenario + "\"");
-
-b_runningMainInterfaceScenarios = false;
-
-if(!selected_scenario.equals("Custom")){
-	f_resetSettings();
-}]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="14" Style="0"/>
-						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
-						<Orientation>VERTICAL</Orientation>
-						<Button><![CDATA[2024: huidige situatie]]></Button>
-						<Button><![CDATA[Custom]]></Button>
-						<LinkTo>false</LinkTo>
-					</ExtendedProperties>
-				</Control>
 				<Image>
 					<Id>1724682548565</Id>
 					<Name><![CDATA[image_projectLogo]]></Name>
