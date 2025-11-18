@@ -78,6 +78,9 @@ public void f_readDatabase(){
 				<Parameter>
 					<Name><![CDATA[p_remainingTotals]]></Name>
 				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_userIdToken]]></Name>
+				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
 			<GenericParameter>
@@ -251,7 +254,7 @@ Building_data building_data_record = Building_data.builder()
 .extra_info(row.get( buildings.extra_info ))
 //.contracted_capacity_kw(row.get( buildings.contracted_capacity_kw ))
 //.electricity_consumption_kwhpa(row.get( buildings.electricity_consumption_kwhpa ))
-//.gas_consumption_kwhpa(row.get( buildings.gas_consumption_kwhpa ))
+//.gas_consumption_m3pa(row.get( buildings.gas_consumption_m3pa ))
 //.energy_label(OL_GridConnectionIsolationLabel.valueOf(row.get( buildings.energy_label )))
 //.pv_installed_kwp(pv_installed_kwp)
 //.pv_potential_kwp(pv_potential_kwp)
@@ -1006,6 +1009,9 @@ import java.io.PrintStream;]]></Import>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[p_residentialScenario_Current]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[t_scenario_XXX]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -2271,6 +2277,9 @@ if(p_subScope_D){
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[user]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_userIdToken]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[p_remainingTotals]]></Name>
