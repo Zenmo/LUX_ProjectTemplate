@@ -505,9 +505,9 @@ for(Tuple row: rows){
 	c_neighbourhood_data.add(Neighbourhood_data.builder()
 
 	//Default	
-	.districtcode(row.get( neighbourhoods.districtcode ))
-	.districtname(row.get( neighbourhoods.districtname ))
 	.neighbourhoodcode(row.get( neighbourhoods.neighbourhoodcode ))
+	.districtname(row.get( neighbourhoods.neighbourhoodname ))
+	.districtcode(row.get( neighbourhoods.districtcode ))
 	.neighbourhoodtype(row.get( neighbourhoods.neighbourhoodtype))
 	.latitude(row.get( neighbourhoods.latitude ))
 	.longitude(row.get( neighbourhoods.longitude ))
@@ -1009,9 +1009,6 @@ import java.io.PrintStream;]]></Import>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[p_residentialScenario_Current]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[t_scenario_XXX]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
