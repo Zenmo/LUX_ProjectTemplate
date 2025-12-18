@@ -857,6 +857,24 @@ for(Tuple row: rows){
 						<Parameter>
 							<Name><![CDATA[map_UINamesFilterOption]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_defaultMainSliderGCName_solarfarm]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_defaultMainSliderGCName_windfarm]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_defaultMainSliderGCName_battery]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_defaultEnergyHubSliderGCName_solarfarm]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_defaultEnergyHubSliderGCName_windfarm]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_defaultEnergyHubSliderGCName_battery]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -1021,6 +1039,24 @@ import java.io.PrintStream;]]></Import>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[map_UINamesFilterOption]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_defaultMainSliderGCName_solarfarm]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_defaultMainSliderGCName_windfarm]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_defaultMainSliderGCName_battery]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_defaultEnergyHubSliderGCName_solarfarm]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_defaultEnergyHubSliderGCName_windfarm]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_defaultEnergyHubSliderGCName_battery]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -2788,13 +2824,13 @@ if(p_subScope_D){
 				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
-				<Id>1658477089980</Id>
+				<Id>1766071796731</Id>
 				<TableReference>
 					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[profiles]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>1</ConnectionIndex>
-				<ExternalTableName><![CDATA["profiles_2023"]]></ExternalTableName>
+				<ExternalTableName><![CDATA["profiles_2024"]]></ExternalTableName>
 				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
@@ -3050,6 +3086,12 @@ if(p_subScope_D){
 		<Resource>
 			<Id>1755769033691</Id>
 			<Path><![CDATA[logo_lux-energy-twin.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1766071762844</Id>
+			<Path><![CDATA[data_Generic/data_ProjectTemplate/Buildings_ProjectTemplate.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
