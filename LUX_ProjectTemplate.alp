@@ -765,7 +765,7 @@ for(Tuple row: rows){
 						<Type><![CDATA[Tuple]]></Type>
 					</Parameter>
 					<Body><![CDATA[//Create a building_data record
-Building_data building_data_record = Building_data.builder().
+Building_data building_data_record = Building_data.builder()
 
 .address_id(row.get( buildings.address_id ))
 .building_id(row.get( buildings.building_id ).replace("panduid.",""))
@@ -797,7 +797,7 @@ Building_data building_data_record = Building_data.builder().
 
 //For PBL heating
 .pbl_data_available(true)
-.building_type(J_PBLUtil.getPBLBuildingTypeOption(rowPBL.get(warmtevraag_woningen.woningtype)))
+.dwelling_type(J_PBLUtil.getPBLDwellingTypeOption(rowPBL.get(warmtevraag_woningen.woningtype)))
 .ownership_type(J_PBLUtil.getPBLOwnershipTypeOption(rowPBL.get(warmtevraag_woningen.eigendom)))
 .insulation_label(J_PBLUtil.getInsulationLabelOption(rowPBL.get(warmtevraag_woningen.schillabel)))
 .local_factor(rowPBL.get(warmtevraag_woningen.lokale_praktijkfactor))
@@ -822,7 +822,7 @@ return building_data_record;]]></Body>
 
 for(Tuple row : lookupTablePBL_spaceHeatingAndResidents){
 	c_lookupTablePBL_spaceHeatingAndResidents.add(PBL_SpaceHeatingAndResidents_data.builder()
-	.building_type(J_PBLUtil.getPBLBuildingTypeOption(row.get(pbl_spaceheating_and_residents.building_type)))
+	.dwelling_type(J_PBLUtil.getPBLDwellingTypeOption(row.get(pbl_spaceheating_and_residents.dwelling_type)))
 	.construction_period(row.get(pbl_spaceheating_and_residents.construction_period))
 	.ownership_type(J_PBLUtil.getPBLOwnershipTypeOption(row.get(pbl_spaceheating_and_residents.ownership_type)))
 	.insulation_label(J_PBLUtil.getInsulationLabelOption(row.get(pbl_spaceheating_and_residents.insulation_label)))	
