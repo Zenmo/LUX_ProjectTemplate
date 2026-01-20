@@ -234,16 +234,7 @@ f_setNeighbourhood_data();
 						<Name><![CDATA[row]]></Name>
 						<Type><![CDATA[Tuple]]></Type>
 					</Parameter>
-					<Body><![CDATA[//PBL data tuple search
-List<Tuple> rowsWarmtevraag = new ArrayList<>();
-//rowsWarmtevraag = selectFrom(warmtevraag_woningen).where(warmtevraag_woningen.postcode_huisnummer.eq(pc_houseNb)).list();	
-
-if(rowsWarmtevraag != null && rowsWarmtevraag.size() > 0){
-	//return f_buildingRecordBuilder_PBL(row, rowsWarmtevraag.get(0));
-}
-
-
-//Create a building_data record
+					<Body><![CDATA[//Create a building_data record
 Building_data building_data_record = Building_data.builder()
 
 .address_id(row.get( buildings.address_id ))
@@ -262,6 +253,12 @@ Building_data building_data_record = Building_data.builder()
 //.gc_id(row.get( buildings.gc_id ))
 .annotation(row.get( buildings.annotation ))
 .extra_info(row.get( buildings.extra_info ))
+.gridnode_id(row.get( buildings.gridnode_id ))
+.latitude(row.get( buildings.latitude ))
+.longitude(row.get( buildings.longitude ))
+.polygon(row.get( buildings.polygon ))
+
+//For Houses
 //.contracted_capacity_kw(row.get( buildings.contracted_capacity_kw ))
 //.electricity_consumption_kwhpa(row.get( buildings.electricity_consumption_kwhpa ))
 //.gas_consumption_m3pa(row.get( buildings.gas_consumption_m3pa ))
@@ -269,10 +266,17 @@ Building_data building_data_record = Building_data.builder()
 //.pv_installed_kwp(pv_installed_kwp)
 //.pv_potential_kwp(pv_potential_kwp)
 //.has_private_parking(has_private_parking)
-.gridnode_id(row.get( buildings.gridnode_id ))
-.latitude(row.get( buildings.latitude ))
-.longitude(row.get( buildings.longitude ))
-.polygon(row.get( buildings.polygon ))
+
+//For PBL heating
+/*
+.pbl_data_available(true)
+.dwelling_type(J_PBLUtil.getPBLDwellingTypeOption(row.get( buildings.dwelling_type )))
+.ownership_type(J_PBLUtil.getPBLOwnershipTypeOption(row.get( buildings.ownership_type )))
+.insulation_label(J_PBLUtil.getInsulationLabelOption(row.get( buildings.insulation_label )))
+.local_factor(row.get( buildings.local_factor ))
+.regional_climate_correction_factor(row.get( buildings.regional_climate_correction_factor ))
+*/
+
 .build();
 
 return building_data_record;]]></Body>
@@ -744,68 +748,6 @@ for(Tuple row: rows){
 	.valuesList(chargerProfile_list)
 	.build());
 }]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[Building_data]]></ReturnType>
-					<Id>1768484103746</Id>
-					<Name><![CDATA[f_buildingRecordBuilder_PBL]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-680</X><Y>405</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[row]]></Name>
-						<Type><![CDATA[Tuple]]></Type>
-					</Parameter>
-					<Parameter>
-						<Name><![CDATA[rowPBL]]></Name>
-						<Type><![CDATA[Tuple]]></Type>
-					</Parameter>
-					<Body><![CDATA[//Create a building_data record
-Building_data building_data_record = Building_data.builder()
-
-.address_id(row.get( buildings.address_id ))
-.building_id(row.get( buildings.building_id ).replace("panduid.",""))
-.streetname(row.get( buildings.streetname ))
-.house_number(row.get( buildings.house_number ))
-.house_letter(row.get( buildings.house_letter ))
-.house_addition(row.get( buildings.house_addition ))
-.postalcode(row.get( buildings.postalcode ))
-.city(row.get( buildings.city ))
-.build_year(row.get( buildings.build_year ))	
-.status(row.get( buildings.status ))
-.purpose(row.get( buildings.purpose ))
-.address_floor_surface_m2(row.get( buildings.address_floor_surface_m2 ))
-.polygon_area_m2(row.get( buildings.polygon_area_m2 ))
-//.gc_id(row.get( buildings.gc_id ))
-.annotation(row.get( buildings.annotation ))
-.extra_info(row.get( buildings.extra_info ))
-//.contracted_capacity_kw(row.get( buildings.contracted_capacity_kw ))
-//.electricity_consumption_kwhpa(row.get( buildings.electricity_consumption_kwhpa ))
-//.gas_consumption_m3pa(row.get( buildings.gas_consumption_m3pa ))
-//.energy_label(OL_GridConnectionEnergyLabel.valueOf(row.get( buildings.energy_label )))
-//.pv_installed_kwp(pv_installed_kwp)
-//.pv_potential_kwp(pv_potential_kwp)
-//.has_private_parking(has_private_parking)
-.gridnode_id(row.get( buildings.gridnode_id ))
-.latitude(row.get( buildings.latitude ))
-.longitude(row.get( buildings.longitude ))
-.polygon(row.get( buildings.polygon ))
-
-//For PBL heating
-.pbl_data_available(true)
-.dwelling_type(J_PBLUtil.getPBLDwellingTypeOption(rowPBL.get(warmtevraag_woningen.woningtype)))
-.ownership_type(J_PBLUtil.getPBLOwnershipTypeOption(rowPBL.get(warmtevraag_woningen.eigendom)))
-.insulation_label(J_PBLUtil.getInsulationLabelOption(rowPBL.get(warmtevraag_woningen.schillabel)))
-.local_factor(rowPBL.get(warmtevraag_woningen.lokale_praktijkfactor))
-.regional_climate_correction_factor(rowPBL.get(warmtevraag_woningen.regionale_klimaatcorrectie))
-
-.build();
-
-return building_data_record;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
