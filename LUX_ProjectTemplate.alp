@@ -11,32 +11,6 @@
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[lux_projecttemplate]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Hour]]></ModelTimeUnit>
-	<OptionLists>
-		<OptionList>
-			<Id>1709718356700</Id>
-			<Name><![CDATA[EnergyDemandTab]]></Name>
-			<Option>
-				<Id>1709718356702</Id>
-				<Name><![CDATA[MOBILITY]]></Name>
-			</Option>
-			<Option>
-				<Id>1709718356704</Id>
-				<Name><![CDATA[ELECTRICITY]]></Name>
-			</Option>
-			<Option>
-				<Id>1709718356706</Id>
-				<Name><![CDATA[HEAT]]></Name>
-			</Option>
-			<Option>
-				<Id>1714324722851</Id>
-				<Name><![CDATA[HUB]]></Name>
-			</Option>
-			<Option>
-				<Id>1721039647716</Id>
-				<Name><![CDATA[NFATO]]></Name>
-			</Option>
-		</OptionList>
-	</OptionLists>
 	<Folders>
 	</Folders>
 	<ActiveObjectClasses>
