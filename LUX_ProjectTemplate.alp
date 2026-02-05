@@ -902,6 +902,12 @@ for(Tuple row : lookupTablePBL_DHWAndCooking){
 						<Parameter>
 							<Name><![CDATA[p_defaultEnergyHubSliderGCName_battery]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_customMapOverlayName]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_customMapOverlayLegend]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -1084,6 +1090,12 @@ import java.io.PrintStream;]]></Import>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[p_defaultEnergyHubSliderGCName_battery]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_customMapOverlayName]]></Name>
+				</Parameter>
+				<Parameter>
+					<Name><![CDATA[p_customMapOverlayLegend]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -2851,7 +2863,7 @@ if(p_subScope_D){
 				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
-				<Id>1766071796731</Id>
+				<Id>1770294679782</Id>
 				<TableReference>
 					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[profiles]]></ClassName>
@@ -3113,6 +3125,12 @@ if(p_subScope_D){
 		<Resource>
 			<Id>1755769033691</Id>
 			<Path><![CDATA[logo_lux-energy-twin.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1770291446660</Id>
+			<Path><![CDATA[data_ProjectTemplate/Cables_ProjectTemplate.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
