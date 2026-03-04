@@ -4,7 +4,7 @@
 	         AnyLogic Project File
 *************************************************
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.7.202512010504" AlpVersion="8.9.7">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.7.202512121156" AlpVersion="8.9.7">
 <Model>
 	<Id>1658477103134</Id>
 	<Name><![CDATA[LUX_ProjectTemplate]]></Name>
@@ -273,7 +273,7 @@ for(Tuple row: rows){
 	.gridnode_id(row.get( gridnodes.gridnode_id ))
 	.fid(row.get( gridnodes.fid ))
 	.status(row.get( gridnodes.status ))
-	.type(row.get( gridnodes.type ))
+	.type(OL_GridNodeType.valueOf(row.get( gridnodes.type )))
 	.description(row.get( gridnodes.description ))
 	.latitude(row.get( gridnodes.latitude ))
 	.longitude(row.get( gridnodes.longitude ))
@@ -644,7 +644,7 @@ List<Double> PVProductionProfile15DegEastWest_fr = selectFrom( profiles ).list( 
 List<Double> windProductionProfile_fr = selectFrom( profiles ).list( profiles.wind_e_prod_normalized );
 
 //Epex data
-List<Double> epexProfile_eurpMWh = selectFrom( profiles ).list( profiles.day_ahead_price_eur_mwh ); 
+List<Double> epexProfile_eurpMWh = selectFrom( profiles ).list( profiles.day_ahead_price_eur_p_mwh ); 
 
 //Various demand profile data
 List<Double> defaultHouseElectricityDemandProfile_fr = selectFrom( profiles ).list( profiles.house_e_demand_other );
@@ -2863,13 +2863,13 @@ if(p_subScope_D){
 				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
-				<Id>1770294679782</Id>
+				<Id>1772631784764</Id>
 				<TableReference>
 					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[profiles]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>1</ConnectionIndex>
-				<ExternalTableName><![CDATA["profiles_2024"]]></ExternalTableName>
+				<ExternalTableName><![CDATA["profiles_2025"]]></ExternalTableName>
 				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
@@ -2903,9 +2903,9 @@ if(p_subScope_D){
 		<MaximumMemory>4096</MaximumMemory>
 		<ModelTimeProperties>
 			<StopOption><![CDATA[Stop at specified date]]></StopOption>
-			<InitialDate><![CDATA[1704067200000]]></InitialDate>	
+			<InitialDate><![CDATA[1735689600000]]></InitialDate>	
 			<InitialTime><![CDATA[0.0]]></InitialTime>	
-			<FinalDate><![CDATA[1735603200000]]></FinalDate>	
+			<FinalDate><![CDATA[1767225600000]]></FinalDate>	
 			<FinalTime><![CDATA[8760.0]]></FinalTime>	
 		</ModelTimeProperties>
 		<AnimationProperties>
@@ -3065,9 +3065,9 @@ if(p_subScope_D){
 			</PresentationProperties>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Never]]></StopOption>
-				<InitialDate><![CDATA[1704067200000]]></InitialDate>
+				<InitialDate><![CDATA[1735689600000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1735603200000]]></FinalDate>
+				<FinalDate><![CDATA[1767225600000]]></FinalDate>
 				<FinalTime><![CDATA[8760.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
@@ -3125,12 +3125,6 @@ if(p_subScope_D){
 		<Resource>
 			<Id>1755769033691</Id>
 			<Path><![CDATA[logo_lux-energy-twin.png]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1770291446660</Id>
-			<Path><![CDATA[data_ProjectTemplate/Cables_ProjectTemplate.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
