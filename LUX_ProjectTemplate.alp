@@ -646,6 +646,9 @@ List<Double> windProductionProfile_fr = selectFrom( profiles ).list( profiles.wi
 //Epex data
 List<Double> epexProfile_eurpMWh = selectFrom( profiles ).list( profiles.day_ahead_price_eur_p_mwh ); 
 
+//CO2 Emission data
+List<Double> CO2EmissionFactorElectricityImport_kgpkWh = selectFrom( profiles ).list( profiles.co2_factor_kg_per_kwh ); 
+
 //Various demand profile data
 List<Double> defaultHouseElectricityDemandProfile_fr = selectFrom( profiles ).list( profiles.house_e_demand_other );
 List<Double> defaultHouseHotWaterDemandProfile_fr = selectFrom( profiles ).list( profiles.house_h_demand_hot_water );
@@ -662,6 +665,7 @@ defaultProfiles_data = DefaultProfiles_data.builder()
 .PVProductionProfile15DegEastWest_fr(PVProductionProfile15DegEastWest_fr)
 .windProductionProfile_fr(windProductionProfile_fr)
 .epexProfile_eurpMWh(epexProfile_eurpMWh)
+.CO2EmissionFactorElectricityImport_kgpkWh(CO2EmissionFactorElectricityImport_kgpkWh)
 .defaultHouseElectricityDemandProfile_fr(defaultHouseElectricityDemandProfile_fr)
 .defaultHouseHotWaterDemandProfile_fr(defaultHouseHotWaterDemandProfile_fr)
 .defaultHouseCookingDemandProfile_fr(defaultHouseCookingDemandProfile_fr)
@@ -1519,11 +1523,11 @@ getExperimentHost().openWebSite("https://lux.energy/");
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
+						<Type><![CDATA[OL_GridOperator]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["Enexis"]]></Code>
+							<Code><![CDATA[OL_GridOperator.ENEXIS]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1726226738865</Id>
