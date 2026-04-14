@@ -4,7 +4,7 @@
 	         AnyLogic Project File
 *************************************************
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.7.202512121156" AlpVersion="8.9.7">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.7.202512010504" AlpVersion="8.9.7">
 <Model>
 	<Id>1658477103134</Id>
 	<Name><![CDATA[LUX_ProjectTemplate]]></Name>
@@ -236,19 +236,23 @@ Building_data building_data_record = Building_data.builder()
 //.contracted_capacity_kw(row.get( buildings.contracted_capacity_kw ))
 //.electricity_consumption_kwhpa(row.get( buildings.electricity_consumption_kwhpa ))
 //.gas_consumption_m3pa(row.get( buildings.gas_consumption_m3pa ))
-//.energy_label(OL_GridConnectionEnergyLabel.valueOf(row.get( buildings.energy_label )))
+//.energy_label(J_PBLUtil.getEnergyLabelOption(row.get( buildings.energy_label )))
 //.pv_installed_kwp(pv_installed_kwp)
 //.pv_potential_kwp(pv_potential_kwp)
 //.has_private_parking(has_private_parking)
 
 //For PBL heating
 /*
-.pbl_data_available(true)
+.use_pbl_data(true)
 .dwelling_type(J_PBLUtil.getPBLDwellingTypeOption(row.get( buildings.dwelling_type )))
 .ownership_type(J_PBLUtil.getPBLOwnershipTypeOption(row.get( buildings.ownership_type )))
 .insulation_label(J_PBLUtil.getInsulationLabelOption(row.get( buildings.insulation_label )))
 .local_factor(row.get( buildings.local_factor ))
 .regional_climate_correction_factor(row.get( buildings.regional_climate_correction_factor ))
+
+//PBL assets
+.cooking_type(J_PBLUtil.getPBLCookingTypeOptionFromPBLData(row.get(buildings.cooking_type)))
+.heating_type(J_PBLUtil.getHeatingTypeOptionFromPBLData(row.get(buildings.heating_type)))
 */
 
 .build();
@@ -1990,7 +1994,7 @@ If you don't: False (faster startup with false)]]></Description>
 				<Variable Class="Parameter">
 					<Id>1749628370658</Id>
 					<Name><![CDATA[p_subScope_A]]></Name>
-					<X>560</X><Y>220</Y>
+					<X>560</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2012,7 +2016,7 @@ If you don't: False (faster startup with false)]]></Description>
 				<Variable Class="Parameter">
 					<Id>1749628398259</Id>
 					<Name><![CDATA[p_subScope_B]]></Name>
-					<X>560</X><Y>240</Y>
+					<X>560</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2033,7 +2037,7 @@ If you don't: False (faster startup with false)]]></Description>
 				<Variable Class="Parameter">
 					<Id>1749628399774</Id>
 					<Name><![CDATA[p_subScope_C]]></Name>
-					<X>560</X><Y>260</Y>
+					<X>560</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2054,7 +2058,7 @@ If you don't: False (faster startup with false)]]></Description>
 				<Variable Class="Parameter">
 					<Id>1749628401063</Id>
 					<Name><![CDATA[p_subScope_D]]></Name>
-					<X>560</X><Y>280</Y>
+					<X>560</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2162,7 +2166,9 @@ Should be in the format:
 }
 
 --> You can add as much databases as you like.
-Important note: The excel sheet name should always be the same as the anylogic database name!]]></Description>
+Important note: The excel sheet name should always be the same as the anylogic database name!
+
+]]></Description>
 					<X>60</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2175,9 +2181,14 @@ Important note: The excel sheet name should always be the same as the anylogic d
 						<CollectionInitializer Class="CodeValue">
 							<Code><![CDATA[//Format: {Excel name, sheet/database name}
 {
-{"Buildings", "buildings"},
-{"GridNodes", "gridnodes"},
-{"Neighbourhoods", "neighbourhoods"}
+{"Buildings", "buildings"},						// Mandatory
+{"GridNodes", "gridnodes"},						// Mandatory
+{"Neighbourhoods", "neighbourhoods"}			// Mandatory
+//{"Chargingstations", "chargingstations"},		// Optional
+//{"Batteries", "batteries"},					// Optional
+//{"Solarfarms", "solarfarms"},					// Optional
+//{"Windfarms", "windfarms"},					// Optional
+//{"Cables", "cables"},							// Optional
 }
 ]]></Code>
 						</CollectionInitializer>
@@ -2187,7 +2198,7 @@ Important note: The excel sheet name should always be the same as the anylogic d
 				<Variable Class="CollectionVariable">
 					<Id>1749712347028</Id>
 					<Name><![CDATA[c_subScopesToSimulate]]></Name>
-					<X>560</X><Y>330</Y>
+					<X>560</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2243,6 +2254,95 @@ Important note: The excel sheet name should always be the same as the anylogic d
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1776151645963</Id>
+					<Name><![CDATA[resultsUISelectedChartTypes_Energy]]></Name>
+					<Description><![CDATA[Choose which energy-related charts you want to make available for the resultsUI. Comment (//) the unwanted charts]]></Description>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>560</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[OL_ChartTypes]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[//Format: {Excel name, sheet/database name}
+{
+OL_ChartTypes.BAR_TOTALS,					// Energy
+OL_ChartTypes.BATTERY, 						// Energy
+OL_ChartTypes.CO2,							// Energy
+OL_ChartTypes.GESPREKSLEIDRAAD,				// Energy
+OL_ChartTypes.GESPREKSLEIDRAAD_BEDRIJVEN,	// Energy
+OL_ChartTypes.GTO,							// Energy
+OL_ChartTypes.KPISUMMARY,					// Energy
+OL_ChartTypes.LOAD_DURATION_CURVES,			// Energy
+OL_ChartTypes.PROFILES,						// Energy
+OL_ChartTypes.SANKEY						// Energy
+}
+]]></Code>
+						</CollectionInitializer>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1776151645987</Id>
+					<Name><![CDATA[resultsUISelectedChartTypes_Economic]]></Name>
+					<Description><![CDATA[Choose which economic-related charts you want to make available for the resultsUI. Comment (//) the unwanted charts]]></Description>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>560</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[OL_ChartTypes]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[//Format: {Excel name, sheet/database name}
+{
+OL_ChartTypes.CAPEX_AND_OPEX,				// Economic
+OL_ChartTypes.CONNECTION_COSTS,				// Economic
+OL_ChartTypes.ENERGY_COSTS,					// Economic
+OL_ChartTypes.TOTAL_COSTS					// Economic
+}
+]]></Code>
+						</CollectionInitializer>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1776151645997</Id>
+					<Name><![CDATA[c_selectedMapOverlayTypes]]></Name>
+					<Description><![CDATA[Choose which map overlays you want to make available for the legend. Comment (//) the unwanted charts]]></Description>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>560</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[OL_MapOverlayTypes]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[{
+OL_MapOverlayTypes.DEFAULT,
+OL_MapOverlayTypes.ELECTRICITY_CONSUMPTION,
+OL_MapOverlayTypes.PV_PRODUCTION,
+OL_MapOverlayTypes.GRID_NEIGHBOURS,
+OL_MapOverlayTypes.CONGESTION,
+OL_MapOverlayTypes.ENERGY_LABEL,
+OL_MapOverlayTypes.PARKING_TYPE,
+OL_MapOverlayTypes.CUSTOM
+}]]></Code>
+						</CollectionInitializer>
+					</Properties>
+
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -2251,7 +2351,7 @@ Important note: The excel sheet name should always be the same as the anylogic d
 					<Id>1726226738848</Id>
 					<Name><![CDATA[f_overwriteAvgValuesAVGCDatabase]]></Name>
 					<Description><![CDATA[Function used to overwrite parameters in the AVGC_database in the loader ]]></Description>
-					<X>580</X><Y>600</Y>
+					<X>580</X><Y>660</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2271,7 +2371,7 @@ if (avg_number_of_cars_per_house != null && avg_number_of_cars_per_house >= 0){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726227634344</Id>
 					<Name><![CDATA[f_setProject_data]]></Name>
-					<X>580</X><Y>460</Y>
+					<X>580</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2310,7 +2410,7 @@ build();
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726231260460</Id>
 					<Name><![CDATA[f_startModel]]></Name>
-					<X>560</X><Y>400</Y>
+					<X>560</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2338,7 +2438,7 @@ loader_ProjectTemplate.f_startUpLoader_default();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726235796348</Id>
 					<Name><![CDATA[f_projectSpecificInitializeFunctions]]></Name>
-					<X>560</X><Y>580</Y>
+					<X>560</X><Y>640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2351,7 +2451,7 @@ f_overwriteAvgValuesAVGCDatabase();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1726238799507</Id>
 					<Name><![CDATA[f_setSettings]]></Name>
-					<X>580</X><Y>440</Y>
+					<X>580</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2366,6 +2466,9 @@ showKPISummary(p_showKPISummary).
 resultsUIRadioButtonSetup(p_selectedResultsUIRadioButton).
 isPublicModel(p_isPublicModel).
 subscopesToSimulate(c_subScopesToSimulate).
+//resultsUISelectedChartTypes_Energy(resultsUISelectedChartTypes_Energy).
+//resultsUISelectedChartTypes_Economic(resultsUISelectedChartTypes_Economic). 
+//activeMapOverlayTypes(c_selectedMapOverlayTypes).
 build();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2374,7 +2477,7 @@ build();]]></Body>
 					<Id>1726498824702</Id>
 					<Name><![CDATA[f_setUser]]></Name>
 					<Description><![CDATA[set user, only used for survey_type = ZORM]]></Description>
-					<X>580</X><Y>420</Y>
+					<X>580</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2401,7 +2504,7 @@ build();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1749712371844</Id>
 					<Name><![CDATA[f_setSubScopesToSimulate]]></Name>
-					<X>560</X><Y>310</Y>
+					<X>560</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2446,7 +2549,7 @@ if(p_subScope_D){
 				<EmbeddedObject>
 					<Id>1726155990352</Id>
 					<Name><![CDATA[loader_ProjectTemplate]]></Name>
-					<X>560</X><Y>520</Y>
+					<X>560</X><Y>580</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2602,7 +2705,7 @@ if(p_subScope_D){
 				<Text>
 					<Id>1726231195744</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>550</X><Y>370</Y>
+					<X>550</X><Y>430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2644,7 +2747,7 @@ if(p_subScope_D){
 				<Text>
 					<Id>1726235447790</Id>
 					<Name><![CDATA[txt_projectSpecificLoader]]></Name>
-					<X>550</X><Y>490</Y>
+					<X>550</X><Y>550</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2665,7 +2768,7 @@ if(p_subScope_D){
 				<Text>
 					<Id>1726235740075</Id>
 					<Name><![CDATA[txt_projectSpecificFunctions]]></Name>
-					<X>550</X><Y>550</Y>
+					<X>550</X><Y>610</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2707,7 +2810,7 @@ if(p_subScope_D){
 				<Text>
 					<Id>1749628313671</Id>
 					<Name><![CDATA[txt_subScopes]]></Name>
-					<X>550</X><Y>190</Y>
+					<X>550</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2856,6 +2959,111 @@ if(p_subScope_D){
 				<Login><![CDATA[]]></Login>
 				<Password><![CDATA[]]></Password>
 			</ExternalConnection>
+			<ExternalConnection>
+				<Id>1776154249562</Id>
+				<Name><![CDATA[database]]></Name>
+				<X>0</X><Y>0</Y>
+				<Label><X>10</X><Y>0</Y></Label>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>true</PresentationFlag>
+				<ShowLabel>true</ShowLabel>
+				<DatabaseType>EXCEL_ACCESS</DatabaseType>
+				<ConnectionURL><![CDATA[]]></ConnectionURL>
+				<ConnectOnStartup>true</ConnectOnStartup>
+				<DatabaseName><![CDATA[]]></DatabaseName>
+				<ResourceReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[data_ProjectTemplate/Chargingstations_ProjectTemplate.xlsx]]></ClassName>
+				</ResourceReference>
+				<Host><![CDATA[localhost]]></Host>
+				<JdbcDriverClassName><![CDATA[net.sourceforge.jtds.jdbc.Driver]]></JdbcDriverClassName>
+				<Login><![CDATA[]]></Login>
+				<Password><![CDATA[]]></Password>
+			</ExternalConnection>
+			<ExternalConnection>
+				<Id>1776154327842</Id>
+				<Name><![CDATA[database]]></Name>
+				<X>0</X><Y>0</Y>
+				<Label><X>10</X><Y>0</Y></Label>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>true</PresentationFlag>
+				<ShowLabel>true</ShowLabel>
+				<DatabaseType>EXCEL_ACCESS</DatabaseType>
+				<ConnectionURL><![CDATA[]]></ConnectionURL>
+				<ConnectOnStartup>true</ConnectOnStartup>
+				<DatabaseName><![CDATA[]]></DatabaseName>
+				<ResourceReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[data_ProjectTemplate/Cables_ProjectTemplate.xlsx]]></ClassName>
+				</ResourceReference>
+				<Host><![CDATA[localhost]]></Host>
+				<JdbcDriverClassName><![CDATA[net.sourceforge.jtds.jdbc.Driver]]></JdbcDriverClassName>
+				<Login><![CDATA[]]></Login>
+				<Password><![CDATA[]]></Password>
+			</ExternalConnection>
+			<ExternalConnection>
+				<Id>1776154414599</Id>
+				<Name><![CDATA[database]]></Name>
+				<X>0</X><Y>0</Y>
+				<Label><X>10</X><Y>0</Y></Label>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>true</PresentationFlag>
+				<ShowLabel>true</ShowLabel>
+				<DatabaseType>EXCEL_ACCESS</DatabaseType>
+				<ConnectionURL><![CDATA[]]></ConnectionURL>
+				<ConnectOnStartup>true</ConnectOnStartup>
+				<DatabaseName><![CDATA[]]></DatabaseName>
+				<ResourceReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[data_ProjectTemplate/Batteries_ProjectTemplate.xlsx]]></ClassName>
+				</ResourceReference>
+				<Host><![CDATA[localhost]]></Host>
+				<JdbcDriverClassName><![CDATA[net.sourceforge.jtds.jdbc.Driver]]></JdbcDriverClassName>
+				<Login><![CDATA[]]></Login>
+				<Password><![CDATA[]]></Password>
+			</ExternalConnection>
+			<ExternalConnection>
+				<Id>1776154480108</Id>
+				<Name><![CDATA[database]]></Name>
+				<X>0</X><Y>0</Y>
+				<Label><X>10</X><Y>0</Y></Label>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>true</PresentationFlag>
+				<ShowLabel>true</ShowLabel>
+				<DatabaseType>EXCEL_ACCESS</DatabaseType>
+				<ConnectionURL><![CDATA[]]></ConnectionURL>
+				<ConnectOnStartup>true</ConnectOnStartup>
+				<DatabaseName><![CDATA[]]></DatabaseName>
+				<ResourceReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[data_ProjectTemplate/Windfarms_ProjectTemplate.xlsx]]></ClassName>
+				</ResourceReference>
+				<Host><![CDATA[localhost]]></Host>
+				<JdbcDriverClassName><![CDATA[net.sourceforge.jtds.jdbc.Driver]]></JdbcDriverClassName>
+				<Login><![CDATA[]]></Login>
+				<Password><![CDATA[]]></Password>
+			</ExternalConnection>
+			<ExternalConnection>
+				<Id>1776154587072</Id>
+				<Name><![CDATA[database]]></Name>
+				<X>0</X><Y>0</Y>
+				<Label><X>10</X><Y>0</Y></Label>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>true</PresentationFlag>
+				<ShowLabel>true</ShowLabel>
+				<DatabaseType>EXCEL_ACCESS</DatabaseType>
+				<ConnectionURL><![CDATA[]]></ConnectionURL>
+				<ConnectOnStartup>true</ConnectOnStartup>
+				<DatabaseName><![CDATA[]]></DatabaseName>
+				<ResourceReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[data_ProjectTemplate/Solarfarms_ProjectTemplate.xlsx]]></ClassName>
+				</ResourceReference>
+				<Host><![CDATA[localhost]]></Host>
+				<JdbcDriverClassName><![CDATA[net.sourceforge.jtds.jdbc.Driver]]></JdbcDriverClassName>
+				<Login><![CDATA[]]></Login>
+				<Password><![CDATA[]]></Password>
+			</ExternalConnection>
 			<TableImportSettings>
 				<Id>1658477089981</Id>
 				<TableReference>
@@ -2877,7 +3085,7 @@ if(p_subScope_D){
 				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
-				<Id>1658477089979</Id>
+				<Id>1776153964048</Id>
 				<TableReference>
 					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[buildings]]></ClassName>
@@ -2894,6 +3102,56 @@ if(p_subScope_D){
 				</TableReference>
 				<ConnectionIndex>3</ConnectionIndex>
 				<ExternalTableName><![CDATA["neighbourhoods"]]></ExternalTableName>
+				<AutoImport>false</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<Id>1776154251101</Id>
+				<TableReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[chargingstations]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>4</ConnectionIndex>
+				<ExternalTableName><![CDATA["chargingstations"]]></ExternalTableName>
+				<AutoImport>false</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<Id>1776154329563</Id>
+				<TableReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[cables]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>5</ConnectionIndex>
+				<ExternalTableName><![CDATA["cables"]]></ExternalTableName>
+				<AutoImport>false</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<Id>1776154416004</Id>
+				<TableReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[batteries]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>6</ConnectionIndex>
+				<ExternalTableName><![CDATA["batteries"]]></ExternalTableName>
+				<AutoImport>false</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<Id>1776154482045</Id>
+				<TableReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[windfarms]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>7</ConnectionIndex>
+				<ExternalTableName><![CDATA["windfarms"]]></ExternalTableName>
+				<AutoImport>false</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<Id>1776154591058</Id>
+				<TableReference>
+					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
+					<ClassName><![CDATA[solarfarms]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>8</ConnectionIndex>
+				<ExternalTableName><![CDATA["solarfarms"]]></ExternalTableName>
 				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 		</ImportSettings>
@@ -3129,6 +3387,36 @@ if(p_subScope_D){
 		<Resource>
 			<Id>1755769033691</Id>
 			<Path><![CDATA[logo_lux-energy-twin.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1776154248893</Id>
+			<Path><![CDATA[data_ProjectTemplate/Chargingstations_ProjectTemplate.xlsx]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1776154327128</Id>
+			<Path><![CDATA[data_ProjectTemplate/Cables_ProjectTemplate.xlsx]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1776154413918</Id>
+			<Path><![CDATA[data_ProjectTemplate/Batteries_ProjectTemplate.xlsx]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1776154479453</Id>
+			<Path><![CDATA[data_ProjectTemplate/Windfarms_ProjectTemplate.xlsx]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+			<Location>FILE_SYSTEM</Location>
+		</Resource>
+		<Resource>
+			<Id>1776154586401</Id>
+			<Path><![CDATA[data_ProjectTemplate/Solarfarms_ProjectTemplate.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
