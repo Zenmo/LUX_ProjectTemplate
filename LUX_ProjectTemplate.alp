@@ -192,7 +192,8 @@ f_setBuilding_data();
 f_setNeighbourhood_data();
 //f_setParkingSpace_data();
 //f_setParcel_data();
-//f_setCable_data();]]></Body>
+//f_setCable_data();
+//f_setDHWProfile_data();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -768,6 +769,73 @@ for(Tuple row : lookupTablePBL_DHWAndCooking){
 	.cooking_gas_demand_m3pa(row.get(pbl_dhw_and_cooking.cooking_gas_demand_m3pa))
 	.dhw_gas_demand_m3pa(row.get(pbl_dhw_and_cooking.dhw_gas_demand_m3pa))
 	.build());
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1777130007989</Id>
+					<Name><![CDATA[f_setDHWProfile_data]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>630</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[// 1. Calculate offset natively using J_TimeParameters day of week calculation (1 = Monday)
+// Example: If Jan 1st is Wednesday (3), the previous Monday is 2 days ago = 48 hours.
+double offsetHours = (energyModel.p_timeParameters.getDayOfWeek1jan() - 1) * 24.0;
+
+// 2. Create the timeline array for 1 year (35040 steps of 15 min), applying the offset backwards
+List<Double> arguments_hr = new ArrayList<>();
+for(int i = 0; i < 35040; i++) {
+    arguments_hr.add(-offsetHours + i * 0.25);
+}
+
+// 3. Dynamically fetch all column names
+Connection conn = getEngine().getModelDatabase().getConnection();
+List<String> columnNames = new ArrayList<>();
+
+try{
+    java.sql.ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM dhw_profiles LIMIT 1");
+    java.sql.ResultSetMetaData rsmd = rs.getMetaData();
+    for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+        columnNames.add(rsmd.getColumnName(i));
+    }
+} catch (java.sql.SQLException e) {
+    e.printStackTrace();
+}
+
+// 4. Group profiles by resident number
+for(String columnName : columnNames){
+    if (!columnName.toLowerCase().startsWith("dhw")) continue;
+    
+    int residents = 1;
+    try {
+        if (columnName.toLowerCase().endsWith("p")) {
+            String[] parts = columnName.split("_");
+            String pPart = parts[parts.length - 1]; // e.g. "1p"
+            residents = Integer.parseInt(pPart.substring(0, pPart.length() - 1));
+        }
+    } catch (Exception e) {
+        traceln("Warning: Could not parse residents from DHW profile column " + columnName + ", defaulting to 2p.");
+        residents = 2;
+    }
+    List<Double> DHWProfile = selectValues(Double.class, "SELECT " + columnName + " FROM dhw_profiles;");
+    
+    if (DHWProfile == null || DHWProfile.isEmpty()) continue;
+    
+    if (!map_nrOfResidentsToDHWprofiles_data.containsKey(residents)) {
+        map_nrOfResidentsToDHWprofiles_data.put(residents, new ArrayList<>());
+    }
+    
+    map_nrOfResidentsToDHWprofiles_data.get(residents).add(DHWProfile_data.builder()
+        .DHWProfileID(columnName)
+        .arguments_hr(arguments_hr)
+        .valuesList(DHWProfile)
+        .profileUnits(OL_ProfileUnits.KWHPQUARTERHOUR)
+        .build());
+        
 }]]></Body>
 				</Function>
 			</Functions>
