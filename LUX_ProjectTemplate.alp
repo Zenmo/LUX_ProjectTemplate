@@ -782,17 +782,9 @@ for(Tuple row : lookupTablePBL_DHWAndCooking){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[// 1. Calculate offset natively using J_TimeParameters day of week calculation (1 = Monday)
-// Example: If Jan 1st is Wednesday (3), the previous Monday is 2 days ago = 48 hours.
-double offsetHours = (energyModel.p_timeParameters.getDayOfWeek1jan() - 1) * 24.0;
+					<Body><![CDATA[List<Double> arguments_hr = selectFrom( dhw_profiles ).list( dhw_profiles.t_h );
 
-// 2. Create the timeline array for 1 year (35040 steps of 15 min), applying the offset backwards
-List<Double> arguments_hr = new ArrayList<>();
-for(int i = 0; i < 35040; i++) {
-    arguments_hr.add(-offsetHours + i * 0.25);
-}
-
-// 3. Dynamically fetch all column names
+// Dynamically fetch all column names
 Connection conn = getEngine().getModelDatabase().getConnection();
 List<String> columnNames = new ArrayList<>();
 
@@ -806,7 +798,7 @@ try{
     e.printStackTrace();
 }
 
-// 4. Group profiles by resident number
+// Group profiles by resident number
 for(String columnName : columnNames){
     if (!columnName.toLowerCase().startsWith("dhw")) continue;
     
@@ -825,11 +817,11 @@ for(String columnName : columnNames){
     
     if (DHWProfile == null || DHWProfile.isEmpty()) continue;
     
-    if (!map_nrOfResidentsToDHWprofiles_data.containsKey(residents)) {
-        map_nrOfResidentsToDHWprofiles_data.put(residents, new ArrayList<>());
+    if (!map_nrOfResidentsToDHWProfiles_data.containsKey(residents)) {
+        map_nrOfResidentsToDHWProfiles_data.put(residents, new ArrayList<>());
     }
     
-    map_nrOfResidentsToDHWprofiles_data.get(residents).add(DHWProfile_data.builder()
+    map_nrOfResidentsToDHWProfiles_data.get(residents).add(DHWProfile_data.builder()
         .DHWProfileID(columnName)
         .arguments_hr(arguments_hr)
         .valuesList(DHWProfile)
