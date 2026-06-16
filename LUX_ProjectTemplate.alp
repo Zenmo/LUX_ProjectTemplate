@@ -552,10 +552,10 @@ for(Tuple row : rows){
 	
 	//Specific
 	.connection_capacity_kw(row.get(chargingstations.connection_capacity_kw))
-	.is_charging_centre(row.get(chargingstations.is_charging_centre))
-	.vehicle_type(OL_EnergyAssetType.valueOf(row.get(chargingstations.vehicle_type)))
-	.number_of_chargers(row.get(chargingstations.number_of_chargers))
-	.power_per_charger_kw(row.get(chargingstations.power_per_charger_kw))
+	.uses_charging_sessions(row.get(chargingstations.uses_charging_sessions))
+	.vehicle_type(OL_VehicleType.valueOf(row.get(chargingstations.vehicle_type)))
+	.number_of_sockets(row.get(chargingstations.number_of_sockets))
+	.power_per_socket_kw(row.get(chargingstations.power_per_socket_kw))
 
 	//GIS
 	.latitude(row.get(chargingstations.latitude))
@@ -3140,7 +3140,7 @@ if(p_subScope_D){
 				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
-				<Id>1776154251101</Id>
+				<Id>1781617665650</Id>
 				<TableReference>
 					<PackageName><![CDATA[lux_projecttemplate]]></PackageName>
 					<ClassName><![CDATA[chargingstations]]></ClassName>
