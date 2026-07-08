@@ -23,7 +23,29 @@
 				<ItemName>1709049506459</ItemName>
 			</GenericParameterSubstituteReference>
 		</GenericParameterSubstitute>
-		<Parameters/>
+		<Parameters>
+			<Parameter>
+				<Name><![CDATA[zero_Interface]]></Name>
+			</Parameter>
+			<Parameter>
+				<Name><![CDATA[defaultProfiles_data]]></Name>
+			</Parameter>
+			<Parameter>
+				<Name><![CDATA[project_data]]></Name>
+			</Parameter>
+			<Parameter>
+				<Name><![CDATA[settings]]></Name>
+			</Parameter>
+			<Parameter>
+				<Name><![CDATA[user]]></Name>
+			</Parameter>
+			<Parameter>
+				<Name><![CDATA[p_userIdToken]]></Name>
+			</Parameter>
+			<Parameter>
+				<Name><![CDATA[p_remainingTotals]]></Name>
+			</Parameter>
+		</Parameters>
 		<ReplicationFlag>false</ReplicationFlag>
 		<Replication Class="CodeValue">
 			<Code><![CDATA[100]]></Code>
