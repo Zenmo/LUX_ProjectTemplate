@@ -2,7 +2,11 @@
 <ActiveObjectClass>
 	<Id>1726154250910</Id>
 	<Name><![CDATA[StartUp_ProjectTemplate]]></Name>
-	<StartupCode><![CDATA[f_startModel();]]></StartupCode>
+	<AdditionalClassCode xmlns:al="http://anylogic.com"/>
+	<Import><![CDATA[import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;]]></Import>
+	<StartupCode><![CDATA[logger.debug("Calling f_startModel()");
+f_startModel();]]></StartupCode>
 	<Generic>false</Generic>
 	<GenericParameter>
 		<Id>1726154250916</Id>

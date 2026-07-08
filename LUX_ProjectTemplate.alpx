@@ -9,7 +9,12 @@
 		<EngineVersion>6</EngineVersion>
 		<JavaPackageName><![CDATA[lux_projecttemplate]]></JavaPackageName>
 		<ModelTimeUnit>Hour</ModelTimeUnit>
-		<Folders/>
+		<Folders>
+			<Folder>
+				<Id>1783506257770</Id>
+				<Name><![CDATA[Logging]]></Name>
+			</Folder>
+		</Folders>
 		<ActiveObjectClasses/>
 		<DifferentialEquationsMethod>EULER</DifferentialEquationsMethod>
 		<MixedEquationsMethod>RK45_NEWTON</MixedEquationsMethod>
@@ -379,6 +384,18 @@
 			</Inputs>
 			<Outputs/>
 		</RunConfiguration>
+		<JavaClasses>
+			<JavaClass>
+				<Id>1783506210369</Id>
+				<Name><![CDATA[LuxLogging]]></Name>
+				<Folder>1783506257770</Folder>
+			</JavaClass>
+			<JavaClass>
+				<Id>1783506487090</Id>
+				<Name><![CDATA[GrayConsoleAppender]]></Name>
+				<Folder>1783506257770</Folder>
+			</JavaClass>
+		</JavaClasses>
 		<RequiredLibraryReference>
 			<LibraryName>com.anylogic.libraries.modules.markup_descriptors</LibraryName>
 			<VersionMajor>1</VersionMajor>
@@ -403,6 +420,14 @@
 			<VersionMinor>0</VersionMinor>
 			<VersionBuild>0</VersionBuild>
 		</RequiredLibraryReference>
+		<ClassPathEntry>
+			<ResourceReference>
+				<PackageName>lux_projecttemplate</PackageName>
+				<ClassName>log4j-slf4j-impl-2.26.0.jar</ClassName>
+			</ResourceReference>
+			<Imported>true</Imported>
+			<Folder>false</Folder>
+		</ClassPathEntry>
 		<CloudModelUuid>123b8977-3095-438e-bc2b-3605a67e7159</CloudModelUuid>
 	</Model>
 	<ConvertersApplied>
