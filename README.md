@@ -1,11 +1,12 @@
-# Zero_ProjectTemplate
-This repository contains the template for the project setup alp. needed to run the Zenmo Zero model.
+# LUX_ProjectTemplate
+This repository contains the template for the project setup alpx. needed to run the LUX EnergyTwin model.
 
 ## Use
-After creating your own project repository, all "ProjectTemplate" words, strings, agents, etc. you can find in the Alp file should be replaced with your own project name. 
-For example: Loader_ProjectTemplate ->  Loader_Example, project_name = ProjectTemplate -> project_name = Example.
+After creating your own project repository (using this as a template), all "ProjectTemplate" words in the files and filenames in the folder (excluding the data_Generic folder) should be replaced with your project name. Note that this project name can not contain any spaces and special signs. Just letters, digits and _ or -. The project name should also always start with a capital letter. (Except if it starts with a digit, then just somehwere in the name a capital letter is fine!).
+Note that "projecttemplate" is also found in the files, which should be replaced with the non-capatilized version of your own projectname as well. -> Meaning find-replace should be case sensitive.
 
-All the Excel files in the repository data_ProjectTemplate have suffix "_ProjectTemplate.xlsx", these, along with the folder name itself, should also be replaced by your project name. 
-To bulk rename the excel files on windows you can use the following command in the PowerShell after navigating to the data_ProjectTemplate folder.
+To make this easy, a powershell script has been made that can be ran by executing (double clicking) the Run-Rename.bat file.
+Then filling in your project name that meets the requirements, and pressing ok.
+The powershell script then replaces all instances of "ProjectTemplate" (and "projecttemplate") in the repository with the new project name (and the non capatilized project name). (Excluding the data_Generic folder).
 
-Get-ChildItem *ProjectTemplate.xlsx | Rename-Item -NewName { $_.Name -replace 'ProjectTemplate.xlsx', 'Your_Name_Here.xlsx'}
+After running the rename script, the bat and powershell (ps1) file can be removed from the repo. Just like (the contents of) this README.
