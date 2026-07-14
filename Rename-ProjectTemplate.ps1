@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 <#
 .SYNOPSIS
     Replaces the tokens "ProjectTemplate" and "projecttemplate" with a project
@@ -9,7 +10,7 @@
     - "projecttemplate" (lowercase)  -> the -ProjectNameLower value
 
     Replacement is CASE-SENSITIVE. Content replacement skips likely-binary
-    files. Folders named in -ExcludeFolders (default: data_Generic) are skipped
+    files. Folders named in -ExcludeFolders (default: data_Generic, .git) are skipped
     entirely, with their subfolders and files. The script skips itself.
 
     IMPORTANT - close apps and sync first:
@@ -30,7 +31,7 @@
     Folder to process. Defaults to the folder containing this script.
 
 .PARAMETER ExcludeFolders
-    Folder names to skip entirely (with subfolders). Default: data_Generic.
+    Folder names to skip entirely (with subfolders). Default: data_Generic, .git.
 
 .PARAMETER DryRun
     Show what would change without modifying anything.
@@ -55,7 +56,7 @@ param(
 
     [string]$Root = $PSScriptRoot,
 
-    [string[]]$ExcludeFolders = @('data_Generic'),
+    [string[]]$ExcludeFolders = @('data_Generic', '.git'),
 
     [switch]$DryRun,
 
